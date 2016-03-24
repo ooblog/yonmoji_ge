@@ -60,3 +60,20 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+
+# git push github:ooblog/yonmoji_ge.git master
+# git log
+# git commit -a -m ""
+yonmoji_ge/
+kantray.*
+kanmap.*
+kanchar.*
+kanword.*
+kanfont.*
+kanzip.*
+testfile/
+kanzip/
+kanfont.svg
+LTsv_joy.*
+pages/

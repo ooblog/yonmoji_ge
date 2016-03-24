@@ -1,0 +1,400 @@
+「yonmoji_ge」は「約四文字(yonmoji_ge)」サイトジェネレータのPythonによる実装です。
+
+ ０-0． ライセンス及びソフトの使用の補足ガイドライン
+ ０-1． インストール＆アンインストール方法・その他セットアップ方法
+ ０-2． その他現在わかっている不具合や今後の課題。
+ １-0． [yonmoji_ge.tsv]の編集方法と「約四文字」のサイト構成。
+ １-1． タグ「yonmoji_ge」の構成。
+ １-2a．項目一覧「inputlist」からの置換タグ「<?username?>」構成。
+ １-2b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
+ １-3． タグ「baseHTML」の構成。
+ １-4． タグ「baseCSS」の構成。
+ １-5． タグ「baseJS」の構成。
+ １-6． タグ「baseXML」の構成。
+ ２．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
+ ３．   作者について、例えば連絡先。
+
+
+０-0． ライセンス及びソフトの使用の補足ガイドライン
+
+ ※「MIT License」準拠。
+   MIT License - Choose a License
+   http://choosealicense.com/licenses/mit/
+
+ ※「MIT License」の日本語訳。
+   licenses/MIT_license - Open Source Group Japan Wiki - Open Source Group Japan - OSDN
+   https://osdn.jp/projects/opensource/wiki/licenses%2FMIT_license
+
+ ※日本語による補足。
+   ・複製物にも「MIT License」の[LICENSE]ファイルを添付る事(著作権表示を誤魔化さない事)。
+   ・いかなる場合においても作者または著作権所有者は一切責任を負わない事。
+   ・ソースコードの閲覧やコピーに制限を設けない事。
+
+ ※「yonmoji_ge」固有の問題への言及。
+   ・ジェネレータで作成したサイトにまでMITライセンスは及ばないはず。
+   ・むしろ出力するHTML,CSS,JSなどをあなたのサイト名などに書き直すべき。初期設定のままだと「約四文字」のクローンが作られるだけ。
+
+
+０-1． インストール＆アンインストール方法・その他セットアップ方法
+
+ 「GitHub Page」上にサイトを作る想定で説明します。
+
+  Websites for you and your projects.
+  https://pages.github.com/
+
+ １．ローカルリポジトリ[username.github.io]フォルダ内[.gitignore]に「yonmoji_ge/」と書き込んで[yonmoji_ge]フォルダがリポジトリに混入しないようにする。
+ ２．「https://github.com/ooblog/yonmoji_ge」から「Download ZIP」でダウンロードした[yonmoji_ge-master.zip]を解凍する(フォルダ[yonmoji_ge-master]ができる)。
+ ３．「リポジトリ[username.github.io/yonmoji_ge]フォルダに[yonmoji_ge-master]の中身をコピーする。
+ ４．設定ファイル[yonmoji_ge.tsv]内の「yonmoji_ge」タグ内の「username」項目をGitHubアカウント名に交換。
+ ５．[yonmoji_ge.py]を起動して「index」をセーブ(「save」ボタン)。[username.github.io]フォルダに[index.html]が作成できたらセットアップ成功。
+
+
+ ０-2． その他現在わかっている不具合や今後の課題。
+
+ Python2.7.3(PuppyLinux571JP)およびPython3.4.3(Wine1.7.18)でジェネレータの動作を確認しています。Windows,cygwin,darwinなどでの動作は確認しておりません。
+ Firefox45.0.1(Linux)およびOpera12.16(PuppyLinux571JP)でサイトの動作を確認しています。GoogleChromeやInternetExplorerなどでの動作は確認しておりません。
+ アスキーアートが崩れる場合はGeanyで"MSゴシック 12"を使うと半角全角が揃うかもです。
+ テンプレートを増やして「約四文字」以外のサイト(ブログみたいにRSSなど出力)も作れるようにしておきたい。
+ 項目数が増えたら２列目に配置予定。
+ 分岐で正規表現も使えるようにしておきたい。
+ 日付を管理してブログ風のサイトも作れるようにしたり、更新履歴もRSSで出力できるようにしたい。
+ カテゴリタグとか仕様すら固まってない。
+ 「https://github.com/ooblog/LTsv9kantray」みたいにフォルダの階層をどう扱うか仕様が固まってない。
+ 「onsubmit」も「addEventListener」で処理したいけどなんとなく動作しない。
+
+
+１-0． [yonmoji_ge.tsv]の編集方法と「約四文字」のサイト構成。
+
+ 設定ファイル[yonmoji_ge.tsv]には架空の検索サイト「約四文字」を想定しています。
+
+  「約四文字」(ooblog.github.io)
+  http://ooblog.github.io/
+
+ 「約四文字」の設定を通して[yonmoji_ge.tsv]の書き方を解説していきます。
+ 「L:Tsv」タグならびに「L:Tsv」自体の解説は「LTsv9kantray」の「LTsv.txt」を参考。
+
+  「LTsv9kantray(tsvtool9)」は「L:Tsv」の読み書きを中心としたモジュール群と漢字入力「kantray」のPythonによる実装です。
+  https://github.com/ooblog/LTsv9kantray
+
+
+ １-1． タグ「yonmoji_ge」の構成。
+
+ 「username」の「ooblog」を書き換えないと「http://username.github.io/」が「http://ooblog.github.io/」になってしまいます。
+
+  [yonmoji_ge|                           「yonmoji_ge」のファイル保存場所などの設定です。
+   font_name                             フォント名指定。初期値は「kantray5x5comic」。
+   font_size                             フォントサイズ指定。初期値は「10」。
+   pagename                              初期値は「[pagename]」。TSV,HTML,CSS,JS,XMLファイル名を置換するのに使うので文字コードが被るとかでなければ変更しない。
+   inputTSV                              初期値は「./pages/[pagename].tsv」。[yonmoji_ge.py]配下に子フォルダ[pages]を作成してページ毎の[*.tsv]ファイルにWebページのコンテンツを保存。
+   outputHTML                            初期値は「	../[pagename].html」。[yonmoji_ge.py]の親フォルダに[*..html]を作成する。
+   outputCSS                             初期値は「../yonmoji.css」。[yonmoji_ge.py]の親フォルダに[*.css]を作成する。
+   outputJS                              初期値は「../yonmoji.js」。[yonmoji_ge.py]の親フォルダに[*.js]を作成する。
+   outputXML                             初期値は「../opensearch.xml」。[yonmoji_ge.py]の親フォルダに[*.xml]を作成する。
+   datename                              初期値は「@000y-@0m-@0dm」。ページ名を空入力(文字列長さ0もしくは「.」のみ)すると日付(yyyy-mm-dd)がページ名になります。
+   datetag                               初期値は「@000y-@0m」。日付管理タグ管理は未実装だが、ブログを月単位でまとめる機能とか想定。
+   username                              初期値は「ooblog」あなたはooblogではないのでGitHubアカウント名をここに書く。
+
+
+１-2a．項目一覧「inputlist」からの置換タグ「<?username?>」構成。
+
+ 「baseHTML」の「<??>」を入力項目で置換する仕組み。「<??>」タグはある程度任意に増設可能。
+ 「inputlist」は上から順番に実行する事を踏まえれば置換内容をさらに置換する階層も可能。
+
+   size:                                 「1」を指定すると改行無しのインライン項目に。「2」以上を指定すると改行有りのブロック項目に。
+   fix:                                  入力させず項目を固定させたい場合に使用。
+   var:                                  インライン項目が指定できる。「[yonmoji_ge|」で指定した設定「<!pagename!>」「<!datename!>」「<!username!>」で置換できる。
+   def:                                  「!」で始まる条件分岐のタグ呼び出し。分岐しなくてもブロック項目の場合は一旦呼び出し。
+
+  [inputlist|                            「yonmoji_ge」で編集する項目を指定します。「<??>」を増やすと入力項目も増えます。
+   <?title?>                             「!title」タグの分岐呼び出し。「<html lang="ja"><head>」の「<title>」の辺りを置換。
+   <?breadcrumbs?>                       「!breadcrumbs」タグの分岐呼び出し。「<html lang="ja"><body><header>」の「<div class="yonmoji_root">」の辺りを置換。
+   <?tagline?>                           「!tagline」タグの分岐呼び出し。「<html lang="ja"><body><section>」１つ目。
+   <?links?>                             「!links」タグの分岐呼び出し。「<html lang="ja"><body><section>」２つ目。
+   <?pagename?>                          「pagename(拡張子を含まないファイル名)」に置換。
+   <?sitename?>                          「http://<?username?>.github.io/」に置換。「<?username?>」の部分は下記の「<!username!>」に置換。
+   <?username?>                          「<!username!>」を「username(ooblog)など」に置換。
+
+
+１-2b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
+
+ とりあえず「<title>」編集をベースに分岐について説明。
+ 「index.html」は「<title>「約四文字」(ooblog.github.io)</title>」と、
+ 「404.html」などは「<title>404 - 「約四文字」(ooblog.github.io)</title>」と出力したい。
+ そこで「pagename(拡張子を含まないファイル名)」でブロック(「size:1」ならインライン扱い)項目を選択する。
+
+  [!title|                               置換項目「<?title?>」から「!title」が呼び出されてます。
+   index                                 「@title_yonmoji」タグのブロック項目呼び出し。ページ名指定はifとかcaseのポジション。
+   *                                     「@title_pagr-yonmoji」タグのブロック項目呼び出し。「*」はelseとかdefaultのポジション。
+
+  [@title_yonmoji|                       分岐タグ「!title」からタグの中身『<title>「約四文字」(<?username?>.github.io)</title>』が呼び出される。
+  [@title_pagr-yonmoji|                  分岐タグ「!title」からタグの中身『<title><?pagename?>-「約四文字」(<?username?>.github.io)</title>』が呼び出される。
+
+ 「inputlist」で説明したように「<?pagename?>」は後から「<!username!>」で置換される。
+
+
+ １-3． タグ「baseHTML」の構成。
+
+ ベースとなるHTMLを「inputlist」の項目で置換していくスタイル。
+
+  <!DOCTYPE html>                        HTML5を宣言。
+  <html lang="ja"><head>                 HTMLで使う言語が日本語をである事を宣言。ついでにメタデータも開始。
+  <meta charset="UTF-8" />               文字エンコーディングがUTF-8である事を宣言。
+  <?title?>                              「<?title?>」→「!title」→「@title_yonmoji」→「<title>「約四文字」(ooblog.github.io)</title>」の様に置換される。
+                                         「<title>」タグはHTML文書にタイトルをつける。
+  <link rel="stylesheet"                 CSS、スタイルシートの宣言。
+  <link rel="icon"                       ファビコンの宣言。
+  <link rel="search"                     検索エンジンの宣言。
+  <script src="yonmoji.js"></script>     Javascript宣言。
+  </head><body>                          メタデータの終了と共に本文開始。
+  <header>                               本文のヘッダ。一般的に目次やロゴ置き場。
+  <div class="yonmoji_root">             ロゴのリンク先はサイトのURL。
+  <?breadcrumbs?>                        パンくずリスト＆サイトマップへのリンク。「１-4． タグ「baseCSS」の構成。」の方で解説。
+  <br class="yonmoji_both" />            CSSで「float」関連の配置をしたら解除しないとレイアウトが崩れる。
+  </header>                              ヘッダの終了。
+  <?tagline?>                            セクション１、単語の解説。「１-5． タグ「baseJS」の構成。」の方で解説。
+                                         「<ol class="yonmoji_‎syllogism">」のクラス名を書き換える事で<li>の項目マーカーを擬似的にアレンジできる。
+                                         セクションタグは「<section><article></article><article></article></section>」みたいに各アーティクル内にコンテンツが入る。
+  <?links?>                              セクション２、関連リンク集。
+   <dl><dt></dt><dd></dd></dl>           定義リスト。
+  <section>                              共通セクション、検索フォーム。
+  <article>                              各コンテンツはアーティクルで囲む。
+  <H1>                                   大見出し。『詮索しない検索エンジン「約四文字」。』
+  <div class="yonmoji">                  中央配置にする時が「div」で囲んで「text-align: center;」。
+  <p class="yonmoji_logo">               「約四文字」のロゴ。画像を使わずWebフォント「kantray5x5comic.woff」で作成。
+  <form method="get" onsubmit="">        フォームの開始。本来なら「method="get"」でURLとしてフォントデータの取得。
+                                         実際には「onsubmit="newword(); return false;"」使ってスクリプトを実行。
+  <label>                                ラベルの開始。ラベルで囲むとテキストと入力フォームとの関係が明確になる。
+  <input type="search">                  一応検索エンジンという設定なので「type="search"」を付ける。
+  </label>                               ラベルの終了。
+  <input type="submit">                  ボタンを押すと「method="get"」もしくは「onsubmit="newword(); return false;"」を実行する。
+  </form>                                フォームの終了。
+  </div>                                 中央配置の終了。
+  <noscript>                             スクリプトが機能停止してると動きませんよ的なコメントをやんわりと。
+  </article>                             検索フォームアーティクルの終了。
+  </section>                             検索フォームセクションの終了。
+  <footer>                               本文のフッタ。一般的に著作権置き場。
+  <p><a href="" rel="author">            リポジトリ「github.com/ooblog/yonmoji_ge/」へのリンク。
+  </footer>                              フッタの終了。
+  </body></html>                         本文の終了と共にHTMLも終了。
+
+
+ １-4． タグ「baseCSS」の構成。
+
+ CSSにも置換機能が必要なのかは未検討。今の所デフォルト以外のCSSは手動で用意する形に。
+
+  @charset "utf-8";                      文字エンコーディングがUTF-8である事を宣言。
+  @font-face{                            Webフォントの宣言。ローカルに存在しないフォントも使える。
+    font-family: "kantray5x5comic";      フォント名。
+    src: url("kantray5x5comic.woff")     フォントのファイル名。
+    format('woff');                      フォントのフォーマット。
+  body{                                  <body>タグの設定。
+    background-color: white;             <body>の背景色を白に指定。
+  mark{                                  <body>タグの設定。
+    background-color: white;             デフォルトが黄色なので白に指定。
+    border: 1px pink solid;              パンくずリストの現在地をピンク色の線で囲む。
+  header{                                <header>タグの設定。
+    border: 1px gray dotted;             ヘッダを灰色の点線で囲む。
+    padding: 1rem;                       枠と本文を１文字分空ける。
+  .yonmoji_root{                         パンくずリストのルート。
+    font-family: "kantray5x5comic";      フォント名。「@font-face」で宣言したWebフォント。
+    font-size: 1rem;                     フォントサイズ。
+    line-height: 1rem;                   フォント間隔。フォントサイズが1remなのでフォント間隔も1remに合わせる。
+    float: left;                         配置を左に。
+    margin-top: -0.5rem;                 文字半分上にずらして「約四文字」を中心に。
+    padding-right: 0.5rem;               右側に文字半角分空ける。
+  .yonmoji_root > a:nth-child(odd){      ルートリンクの１行め「約四」の部分。
+    text-decoration: none;               ルートリンク「約四」の下線を消去。「約四文字」をロゴ画像の様に見せる。
+  .yonmoji_sitemap{                      「sitemap(404) 」の設定。
+    float: right;                        配置を右に。
+  yonmoji_both{                          「float」解除専用。
+    float: both;                         CSSで「float」関連の配置をしたら解除しないとレイアウトが崩れる。
+  section{                               <section>タグの設定。
+    margin-top: 1rem;                    ヘッダから１文字分空ける。
+    border: 2px black solid;             セクションを太線(2px)で囲む。
+    padding: 1rem;                       枠と本文を１文字分空ける。
+  input.yonmoji_entry{                   入力フォームの設定。
+    border: solid 1px orange;            入力フォームを橙色の線に変更する。
+    width: 12rem;                        入力フォームの横幅。
+  input.yonmoji_entry:focus{             入力フォームにカーソルがある時の設定。
+    border: solid 2px IndianRed;         入力フォームを赤色の太線(2px)に一時的に変更する。
+  .yonmoji{                              入力フォームを中心に配置する設定。
+    width: 100%;  margin: 0 auto;        一旦<div>で横幅を確保。
+    text-align: center;                  <div>の中身を中心に配置する設定。
+    padding-top: 1rem;                   １文字分空ける。
+  .yonmoji_logo{                         「約四文字」をロゴ画像の様に見せる。
+    font-family: "kantray5x5comic";      フォント名。「@font-face」で宣言したWebフォント。
+    font-size: 5rem;                     「約四文字」ロゴのフォントサイズ。
+    line-height: 5rem;                   フォント間隔。フォントサイズが5remなのでフォント間隔も5remに合わせる。
+    margin: 0 auto;                      <p>の横幅を<div>に合わせる。
+  .yonmoji_word{                         ページ名を「約四文字」ロゴ風にデザインを寄せる。
+    font-family: "kantray5x5comic";      フォント名。「@font-face」で宣言したWebフォント。
+    font-size: 2rem;                     フォントサイズ。
+    line-height: 2rem;                   フォント間隔。フォントサイズが2remなのでフォント間隔も2remに合わせる。
+    float: left;                         配置を左に。
+    margin: 0rem;                        枠の周りに余白を取らない。
+  h1{ font-size: 2.0rem; }               <h1>のフォントサイズ。
+  h2{ font-size: 1.8rem; }               <h2>のフォントサイズ。
+  h3{ font-size: 1.6rem; }               <h3>のフォントサイズ。
+  h4{ font-size: 1.4rem; }               <h4>のフォントサイズ。
+  h5{ font-size: 1.2rem; }               <h5>のフォントサイズ。
+  h6{ font-size: 1.0rem; }               <h6>のフォントサイズ。
+  footer{                                <footer>タグの設定。
+    margin-top: 1rem;                    セクションから１文字分空ける。
+    border: 1px gray dotted;             ヘッダを灰色の点線で囲む。
+    text-align: center;                  中央配置。
+
+
+１-5． タグ「baseJS」の構成。
+
+ デフォルト以外にも複数JavaScriptが必要な場合手動で用意してください。
+
+  <?xml version="1.0" encoding="UTF-8"?> XMLと文字エンコーディングを宣言。
+  var newpage="index";                   グローバル変数「newpage」を用意したのは「setTimeout(newhref,0)」を解りやすくするため。
+  function newhref(){                    ページ移動の関数。
+    var regExp=                          正規表現を用いてファイル名に使えない文字の排除。
+    window.location.href=                ページ移動。
+  function newquery(){                   ページ読込直後の処理をする関数。
+    var oldhref=window.location.href;    とりあえず現在のURLを把握する。
+    if ( oldhref.indexOf("?page=")>=0    URLにクエリー要素があるかチェック。
+        var regExp=new RegExp(           「github.io/」と「github.io/*.html」の区別を無くす。
+        oldhref=oldhref.substr(          ページ名を取り出す。
+        newpage=decodeURI(oldhref);      URLのパーセントエンコーディングをデコード。
+        document.forms.entry.page.value= ページ移動前に入力フォームに移動先を表示。
+        setTimeout(newhref,0);           「setTimeout」で描画更新のタイミングを作る。
+    else{                                ページ移動しない場合。
+        newstyle();                      リストの装飾関数。
+        oldhref=oldhref.substr(          ページ名を取り出す。
+        if ( oldhref==""                 「index」か調べる。
+      document.forms.entry.page.focus(); 「index」の時は入力フォームにカーソルを合わせる。
+  function newword(){                    入力フォームで「onsubmit」したら呼び出される
+      newpage=                           「newpage」変数にページ名
+      newhref();                         入力フォームにページ名入ってるので「setTimeout」使わずにページ移動。
+  if( window.addEventListener ){         window.loadイベントに「newquery()」登録。
+  else if( window.attachEvent ){         window.onloadイベントに「newquery()」登録(IE方言)。
+  else{                                  window.onloadイベントに「newquery()」登録(若干古い)。
+  function newstyle(){                   「<ol class="yonmoji_‎syllogism">」のクラス名を書き換える事で<li>の項目マーカーを擬似的にアレンジできる。
+    var styledic={                       変数辞書「styledic」に項目マーカーを追加したりできる。
+     "yonmoji_‎syllogism":                大小結（三段論法：だいしょうけつ）
+     "yonmoji_shuhar":                   守破離（しゅはり）
+     "yonmoji_johakyu":                  序破急（じょはきゅう）
+     "yonmoji_kishoutenketsu":           起承転結（きしょうてんけつ）
+     "yonmoji_kishouhojoketsu":          起承鋪叙結（きしょうほじょけつ）
+     "yonmoji_kishouhojokaketsu":        起承鋪叙過結（きしょうほじょかけつ）
+     "yonmoji_kishouketsu":              起承結終（きしょうけつ・おわり）
+     "yonmoji_shoutententen":            承転転転（しょうてんてんてん）
+     "yonmoji_tentententen":             転転転転（てんてんてんてん）
+     "yonmoji_kiketsu":                  起結（きけつ）
+     "yonmoji_tsuriketunige":            釣結逃（つりけつにげ）
+     "yonmoji_kiketsushouten":           起結承転（きけつしょうてん）
+     "yonmoji_ketsushoutentei":          結承転提（けつしょうてんてい）
+     "yonmoji_kishoutenketsuyami":       起承転結闇（きしょうてんけつ・やみ）
+     "yonmoji_PDCA":                     ＰＤＣＡ（Plan・Do・Check・Action）
+     "yonmoji_PPPP":                     ＰＰＰＰ（Plan・Plan・Plan・Plan）
+     "yonmoji_DDDD":                     ＤＤＤＤ（Do・Do・Do・Do）
+     "yonmoji_ganbaru":                  頑頑頑頑（頑張れ・頑張れ・頑張れ・頑張れ）
+     "yonmoji_asahiruyoru":              朝昼夜徹明（朝・昼・夜・徹夜・夜明け）
+     "yonmoji_QVSA":                     ＱＶＳＡ（Question・Vision・Solution・Action）
+     "yonmoji_shunkashutou":             春夏秋冬（しゅんかしゅうとう）
+     "yonmoji_shunbaikashutou":          春梅夏秋冬（しゅんばいかしゅうとう）
+     "yonmoji_shunbaikaakisametou":      春梅夏秋雨冬（しゅんばいかあきさめとう）
+     "yonmoji_ame":                      雨雨雨雨（さめざめさめざめ）
+     "yonmoji_yuki":                     雪雪雪雪（ゆきゆきせつせつ）
+     "yonmoji_kanki":                    乾乾乾（乾季・乾季・乾季）
+     "yonmoji_tozainannboku":            東西南北中（とうざいなんぼく・ちゅうおう）
+     "yonmoji_seishuhakugen":            青朱白玄（せいしゅはくげん）
+     "yonmoji_biyori":                   最極凶劣（ギャグマンガ日和ソードマスターヤマト：サイアーク・ゴクアーク・キョウアーク・レツアーク）
+     "yonmoji_moshimo":                  忍竜武精死（VIPRPGもしもシリーズ五人揃って四天王：ニンニン・ドラゴナス・ムシャ・ダーエロ・死神五世）
+     "yonmoji_bunmei":                   独米英仏伊日中韓（エスニックジョーク【製品とは】①ドイツ人が発明 ②アメリカ人が製品化 ③イギリス人が投資 ④フランス人がデザイン ⑤イタリア人が宣伝 ⑥日本人が小型化もしくは高性能化に成功 ⑦中国人が海賊版を作り ⑧韓国人が起源を主張）
+     "yonmoji_decimal":                  １２３４５６７８９（数字）
+     "yonmoji_circle":                   ①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳（丸数字）
+     "yonmoji_ideographic":              一二三四五六七八九十（漢数字）
+     "yonmoji_roman":                    ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ（ローマ数字）
+     "yonmoji_lower-alpha":              ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ（アルファベット小文字）
+     "yonmoji_upper-alpha":              ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ（アルファベット大文字）
+     "yonmoji_iroha-hiragana":           いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす（いろは平仮名）
+     "yonmoji_iroha-katakana":           イロハニホヘトチリヌルヲワカヨタレソツネナラムウヰノオクヤマケフコエテアサキユメミシヱヒモセス（イロハ片仮名）
+     "yonmoji_todofuken":                北青岩城秋形島茨栃群埼千東神潟富石井梨野岐静愛三滋京阪兵奈和鳥根岡広口徳川媛高福佐長熊分宮鹿沖（都道府県）
+    var syllogismStyle=                  CSSオブジェクト準備。
+    appendChild(syllogismStyle);         CSSオブジェクト追加。
+    var stylesheet=                      追加したCSSオブジェクトを取得。
+    for( key in styledic ){              「stylesheet.insertRule」でCSSテキストを追記。
+
+ 「styledic」を元にJavaScript生成されるCSSのイメージ。
+
+  .yonmoji_‎syllogism{                    「styledic」辞書のキーにクラス名、データに項目一覧。
+    margin-left: 1rem;                   リストの左側を１文字空ける。
+    margin-bottom: 3rem;                 リストの下側を３文字空ける。
+    list-style-type: none;               項目マーカー無しに変更。
+  .yonmoji_‎syllogism li{                 <li>タグの設定。
+    margin-bottom: 0.5rem;               リスト間の隙間を文字半分空ける。
+    text-indent: -2rem;                  リスト内の１行目を２文字左にずらして擬似マーカーと本文の距離を置く。
+  .yonmoji_‎syllogism li:before{          リストの項目に本文に無い文字を追加する。
+    margin-right: 1rem;                  擬似マーカーと本文を１文字空ける。
+    font-size: 1.4rem;                   擬似マーカーのフォントサイズ。
+   .yonmoji_‎syllogism li:nth-child(1):before{ content: "大"; }   １項目目に「大前提（三段論法）」
+   .yonmoji_‎syllogism li:nth-child(2):before{ content: "小"; }   ２項目目に「小前提（三段論法）」
+   .yonmoji_‎syllogism li:nth-child(3):before{ content: "結"; }   ３項目目に「結論（三段論法）」
+
+
+１-6． タグ「baseXML」の構成。
+
+ 検索エンジンの類が不要の場合「baseXML」タグごと消してしまっても問題無いかと思います。
+
+  <?xml version="1.0" encoding="UTF-8"?> XMLと文字エンコーディングを宣言。
+  <OpenSearchDescription>                OpenSearchを宣言。
+  <ShortName>                            検索エンジンの名前
+  <Description>                          検索エンジンの詳細。
+  <InputEncoding>                        検索エンジンの文字エンコーディング。
+  <Image>                                アイコン画像読込は失敗する場合があるので「data:image/png;base64,」とXMLに画像を埋め込むのが確実。
+  <Url>                                  templateの「{searchTerms}」が入力された文字。
+  </OpenSearchDescription>               OpenSearchの終了と共にXMLも終了。
+
+
+２．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
+
+ Ｑ．[kantray.py]をダブルクリックしても起動しない。
+ Ａ．Linuxの場合パーミッションで実行が許可されてないのかも。もしWindowsの話でPythonをインストールしてなければ動くはずがないのでPythonをインストール。
+     Wineで[python-*.msi]が動かないって話なら[wine_sh/python3install.sh]を参考。「msiexec /i python-3.4.3.msi」の様なコマンドが必要。
+
+      Welcome to Python.org
+      https://www.python.org/
+
+ Ｑ．名前変えても同じファイルが大量生産される。
+ Ａ．新規ページを作成する場合は必ず[Enter]キーを押してください。初期化しないで保存すると他のページをコピーしたことになります。
+
+ Ｑ．HTMLが初期化されない。
+ Ａ．[pages]フォルダ内に同名の[*.tsv]があるとそっちを読み込むのでファイル削除してから[Enter]キー。
+
+ Ｑ．JSやCSSが更新されない。
+ Ａ．HTML以外のファイルは「save」ボタン押した時にに１度だけ作成、つまり上書きをしないので[*.css][*.js]を削除。
+
+ Ｑ．Base64の画像ってどうやって作るんだよ。
+ Ａ．Linuxなら「# base64 favicon.png」とコマンド入力。WindowsだとLhaplusで作れた気がするけど右クリックの動作がWineからは確認できず。
+
+    Lhaplus - 窓の杜ライブラリ
+    http://www.forest.impress.co.jp/library/software/lhaplus/
+
+ Ｑ．五人揃って四天王とかの元ネタ知りたい。
+ Ａ．ネットスラングやエスニックジョークの類はURL先を参考。
+
+    四天王 (してんのう)とは【ピクシブ百科事典
+    http://dic.pixiv.net/a/%E5%9B%9B%E5%A4%A9%E7%8E%8B
+
+    【製品とは】 | コピペ博物館
+    http://copipe.hakubutsukan.net/laugh/entry-237/
+
+
+３．   作者について、例えば連絡先。
+
+ 更新情報はGitHubなどを確認してください。
+
+  ooblog/yonmoji_ge(GitHub)
+  https://github.com/ooblog/yonmoji_ge
+
+ 大風呂ダ敷
+  http://d.hatena.ne.jp/ooblog/
+
+
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE
