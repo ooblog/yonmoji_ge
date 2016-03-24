@@ -1,6 +1,6 @@
 # 「yonmoji_ge」は「約四文字(yonmoji)」サイトジェネレータのPythonによる実装です。
 
-[http://ooblog.github.io/](http://ooblog.github.io/)のPages構築を検索エンジン風に構築してみた。  
+[http://ooblog.github.io/](http://ooblog.github.io/)のPagesを検索エンジン風に構築してみた。  
 
 ## セットアップ方法(GitHub Pageを「約四文字」にする)
 
@@ -60,4 +60,4 @@ Python2.7.3(PuppyLinux571JP)およびPython3.4.3(Wine1.7.18)で動作を確認�
 
 Copyright (c) 2016 ooblog  
 License: MIT  
-[https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE](https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE "https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE")  
+[https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE](https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE "https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE")  
