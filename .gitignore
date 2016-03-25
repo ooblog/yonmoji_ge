@@ -65,7 +65,7 @@ target/
 # git push github:ooblog/yonmoji_ge.git master
 # git log
 # git commit -a -m ""
-yonmoji_ge/
+yakuyon/
 kantray.*
 kanmap.*
 kanchar.*
@@ -76,4 +76,4 @@ testfile/
 kanzip/
 kanfont.svg
 LTsv_joy.*
-pages/
+favicon_inkscape.svg

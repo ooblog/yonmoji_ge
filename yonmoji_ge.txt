@@ -85,7 +85,7 @@
    font_name                             フォント名指定。初期値は「kantray5x5comic」。
    font_size                             フォントサイズ指定。初期値は「10」。
    pagename                              初期値は「[pagename]」。TSV,HTML,CSS,JS,XMLファイル名を置換するのに使うので文字コードが被るとかでなければ変更しない。
-   inputTSV                              初期値は「./pages/[pagename].tsv」。[yonmoji_ge.py]配下に子フォルダ[pages]を作成してページ毎の[*.tsv]ファイルにWebページのコンテンツを保存。
+   inputTSV                              初期値は「./yakuyon/[pagename].tsv」。[yonmoji_ge.py]配下に子フォルダ[yakuyon]を作成してページ毎の[*.tsv]ファイルにWebページのコンテンツを保存。
    outputHTML                            初期値は「	../[pagename].html」。[yonmoji_ge.py]の親フォルダに[*..html]を作成する。
    outputCSS                             初期値は「../yonmoji.css」。[yonmoji_ge.py]の親フォルダに[*.css]を作成する。
    outputJS                              初期値は「../yonmoji.js」。[yonmoji_ge.py]の親フォルダに[*.js]を作成する。
@@ -363,7 +363,7 @@
  Ａ．新規ページを作成する場合は必ず[Enter]キーを押してください。初期化しないで保存すると他のページをコピーしたことになります。
 
  Ｑ．HTMLが初期化されない。
- Ａ．[pages]フォルダ内に同名の[*.tsv]があるとそっちを読み込むのでファイル削除してから[Enter]キー。
+ Ａ．[yakuyon]フォルダ内に同名の[*.tsv]があるとそっちを読み込むのでファイル削除してから[Enter]キー。
 
  Ｑ．JSやCSSが更新されない。
  Ａ．HTML以外のファイルは「save」ボタン押した時にに１度だけ作成、つまり上書きをしないので[*.css][*.js]を削除。

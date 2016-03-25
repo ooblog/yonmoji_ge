@@ -1,11 +1,11 @@
-# 「yonmoji_ge」は「約四文字(yonmoji)」サイトジェネレータのPythonによる実装です。
+# 「yonmoji_ge」は「約四文字」サイトジェネレータのPythonによる実装です。
 
 [http://ooblog.github.io/](http://ooblog.github.io/)のPagesを検索エンジン風に構築してみた。  
 
 ## セットアップ方法(GitHub Pageを「約四文字」にする)
 
-「[.gitignore](.gitignore)」ファイルに「yonmoji&#95;ge/」フォルダを追加しておく(リポジトリ混入回避)。  
-「yonmoji&#95;ge/」フォルダの中に「yonmoji&#95;ge.py」などの実行環境をコピー。  
+「ooblog.github.io(sername.github.io)/[.gitignore](../ooblog.github.io/.gitignore)」ファイルに「yonmoji&#95;ge/」フォルダを追加しておく(リポジトリ混入回避)。  
+「yonmoji&#95;ge/」フォルダの中に「yonmoji&#95;ge.&#42;」などの実行環境をコピー。  
 「[yonmoji_ge.py](yonmoji_ge.py)」でページ保存すると「index,html」がリポジトリのルートにできてるか確認。  
 設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」の解説は「[yonmoji_ge.txt](yonmoji_ge.txt)」を参考。  
 
@@ -37,12 +37,12 @@
     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 左上の入力欄にはファイル名を入力します。空入力(文字列長さ0もしくは「.」のみ)すると日付(yyyy-mm-dd)がページ名になります。  
-入力欄で&#91;Enter&#93;キーを押すと初期設定を読み込みます。「pages/&#42;.tsv」があると設定を読み込みます。  
-「save」ボタンを押すと「pages/&#42;.tsv」と「../&#42;.html」、上記の例だと「index.tsv」「index.html」を上書き保存します。  
+入力欄で&#91;Enter&#93;キーを押すと初期設定を読み込みます。「yakuyon/&#42;.tsv」があると設定を読み込みます。  
+「save」ボタンを押すと「yakuyon/&#42;.tsv」と「../&#42;.html」、上記の例だと「index.tsv」「index.html」を上書き保存します。  
 ベースとなるHTMLテキスト内のタグ(左側の「&#60;&#63;〜&#63;&#62;」)を右側の入力に置換replaceする方法で個々のページを編集するスタイルです。  
 一度作成したファイルはシーク操作で開く事が可能。保存しないでシークすると入力データは消えるので注意。  
 
-「pages/&#42;.tsv」を消す操作は無いので初期化したい時は「pages/&#42;.tsv」を削除して、ファイルが無い状態で入力欄で&#91;enter&#93;キー。  
+「yakuyon/&#42;.tsv」を消す操作は無いので初期化したい時は「yakuyon/&#42;.tsv」を削除して、ファイルが無い状態で入力欄で&#91;enter&#93;キー。  
 
 ## 入力項目タグは変更できます。
 

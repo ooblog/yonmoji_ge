@@ -12,7 +12,7 @@ modify	20160314M010029
 font_name	kantray5x5comic
 font_size	10
 pagename	[pagename]
-inputTSV	./pages/[pagename].tsv
+inputTSV	./yakuyon/[pagename].tsv
 outputHTML	../[pagename].html
 outputCSS	../yonmoji.css
 outputJS	../yonmoji.js
