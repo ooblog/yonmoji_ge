@@ -63,8 +63,10 @@ target/
 
 
 # git push github:ooblog/yonmoji_ge.git master
+# git push github:ooblog/yonmoji_ge.git switchcase
 # git log
 # git commit -a -m ""
+pages/
 yakuyon/
 kantray.*
 kanmap.*
