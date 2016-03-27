@@ -1,0 +1,460 @@
+[L:Tsv|
+code	UTF-8
+enter	LF
+tab	8
+program	yonmoji_ge.py
+LTsvver	20160314M010029
+modify	20160314M010029
+|L:Tsv]
+
+[*siteconfig|
+inputTSV	./yakuyon/<!pagename!>.tsv
+outputHTML	../<!pagename!>.html
+outputCSS	../yakuyon.css
+outputJS	../yakuyon.js
+outputXML	../opensearch.xml
+datename	@000y-@0m-@0dm
+datetag		@000y-@0m
+|*siteconfig]
+
+[*inputlist|
+<?title?>	!title
+<?breadcrumbs?>	!breadcrumbs
+<?tagline?>	!tagline
+<?links?>	!links
+<?pagename?>	<!pagename!>
+<?sitename?>	http://<!username!>.github.io/
+|*inputlist]
+
+[!title|
+index	@title_yonmoji
+*	@title_pagr-yonmoji
+|!title]
+
+[@title_yonmoji|
+ <title>「約四文字」(<?username?>.github.io)</title>
+|@title_yonmoji]
+
+[@title_pagr-yonmoji|
+ <title><?pagename?> - 「約四文字」(<?username?>.github.io)</title>
+|@title_pagr-yonmoji]
+
+[!breadcrumbs|
+index	@root_404
+404	@root>404
+*	@root>page_404
+|!breadcrumbs]
+
+[@root_404|
+  <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
+|@root_404]
+
+[@root>404|
+  <span> &#62; <mark><?pagename?></mark></span>
+|@root>404]
+
+[@root>page_404|
+  <span> &#62; <mark><?pagename?></mark></span>
+  <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
+|@root>page_404]
+
+[!tagline|
+index		None
+404		@404
+よんもじ		@よんもじ
+やくよん		@やくよん
+ぶっくま		@ぶっくま
+*		@page
+|!tagline]
+
+[@404|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word">４０<br />　４</H2>
+    <H3>404 Not Found。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_ketsushoutentei">
+    <li>「<dfn><abbr title="404 Not Found">404</abbr></dfn>」はページが見つからない事を表すHTTPステータスコードです。</li>
+    <li>入力欄に入力した単語のページに移動するはずでした。</li>
+    <li>GitHub Pageでは404エラーが発生するとこの「404.html」を表示します。</li>
+    <li>単語が思いつかない、その他不具合などの疑いがある場合、<br />入力欄に「よんもじ」「やくよん」と入力してみて動作確認してみてください。</li>
+   </ol>
+   <p>
+    語彙が増えたら404に案内所設置予定。<br />
+   </p>
+   </article>
+ </section>
+|@404]
+
+[@よんもじ|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word">よん<br />もじ</H2>
+    <H3>「<dfn>yonmoji_ge(<abbr title="yonmoji_ge"><?pagename?></abbr>)</dfn>」」は<br />「約四文字」のサイトジェネレータです。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_ketsushoutentei">
+    <li>HTML入力ミス回避やサイト構成ちゃぶ台返し対応とか考えてサイトジェネレータも作った(準備中)。</li>
+    <li>「yonmoji_ge.py」の細かい使い方はリポジトリ内の「yonmoji_ge.txt」を参考。<br />(リポジトリ準備できたらリンク貼り直す)</li>
+    <li>テンプレの変更部分だけ入力する形にしてページを量産予定。</li>
+    <li>設定ファイル「yonmoji_ge.tsv」を書き換える事によって検索サイト以外のサイトも作れるようにはしたいかも。</li>
+   </ol>
+   <p>
+    ブログ作れたらというか、RSSリーダ(sirogane)作ってた事があるのにサイトジェネレータがRSS吐かない矛盾感は解決したい。<br />
+   </p>
+   </article>
+ </section>
+|@よんもじ]
+
+[@やくよん|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word">やく<br />よん</H2>
+    <H3>「<dfn>約四文字(<abbr title="約四文字"><?pagename?></abbr>)</dfn>」は<br />架空の検索エンジンです。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_kiketsushouten">
+    <li>よくアニメとかドラマとかでググる時Google先生の代わりに架空の検索エンジン出てくる。</li>
+    <li>逆に架空の検索エンジンを作ってしまうのはどうだろうと思いついた(自作の小説用途などに便利)。</li>
+    <li>架空の検索エンジンだけどURLが存在していれば便乗フィッシングサイトから読者を守れる。</li>
+    <li>フィッシングとは違うけど「電車男」劇中掲示板に似た名前の「Aチャンネル」みたいに名称が普通に被る場合も。</li>
+   </ol>
+   <p>
+    フォント「kantray5x5comic.woff」を表示テストする簡易的サイトを作るつもりが気がつくとなぜか違うサイトに。<br />
+   </p>
+   </article>
+ </section>
+|@やくよん]
+
+[@ぶっくま|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word">ぶっ<br />くま</H2>
+    <H3>「<dfn>ブックマークレット<abbr title="ブックマークレット">(<?pagename?>)</abbr></dfn>」は<br />ブラウザのブックマークで動作する検索ダイアログです。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_kiketsushouten">
+    <li>ブラウザの「ブックマーク」にJavaScriptを登録して使用できる検索ダイアログです。</li>
+    <li>テキストを選択した状態で検索ダイアログを開くと選択テキストが最初から代入されます。<br />ダイアログ内で入力変更も可能です。</li>
+    <li>OKボタンで、ダイアログに入力したページ名でページが表示されるはずです。</li>
+    <li>
+     実は「<a href="javascript:(function(){%20var%20d=document;var%20s=d.selection?d.selection.createRange().text:d.getSelection();%20var%20t=prompt('page%EF%BC%9A['+s+']%E7%B4%84%E5%9B%9B%E6%96%87%E5%AD%97',s);%20if(t.length>0){var%20regExp=new%20RegExp('[/|\\|:|*|?|<|>|\|]','g');t=t.replace(regExp,'');window.open('<?sitename?>'+t+'.html');}%20})();" title="「約四文字」検索ダイアログ(ブックマークレット)">「約四文字」検索ダイアログ</a>」をブックマークに登録するよりも、<br />
+     ブラウザ右上の検索バーから「<a href=""<?sitename?>opensearch.xml" title="<?sitename?>opensearch.xml">opensearch.xml</a>」を登録するといわゆる「検索プロバイダー」っぽく、<br />
+     URL「http://<?sitename?>?page=<?pagename?>」を発行させてより検索っぽい挙動に寄せる事も可能です。<br />
+    </li>
+   </ol>
+   <p>
+    本来「/?page=<?pagename?>」といったクエリーはGitHubで動きません。<br />
+    JavaScriptでそれっぽく見せてるだけなので勘違いを伝聞しないよう注意。<br />
+    一旦トップページ(<a href="index.html" title="index.html">index.html</a>)を読み込むのが二度手間だし鯖負荷だしなのでブックマークレット推奨なのです。<br />
+   </p>
+   </article>
+ </section>
+|@ぶっくま]
+
+[@page|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word"><?pagename?><br /></H2>
+    <H3>「<dfn>□□(<abbr title=""><?pagename?></abbr>)</dfn>」は○○です。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_kishoutenketsu">
+    <li>(起)。</li>
+    <li>(承)。</li>
+    <li>(転)。</li>
+    <li>(結)。</li>
+   </ol>
+   <p>
+    補足説明。<br />
+   </p>
+   </article>
+ </section>
+|@page]
+
+[!links|
+index		None
+404		@約四関連リンク
+よんもじ		@約四関連リンク
+やくよん		@約四関連リンク
+ぶっくま		@約四関連リンク
+*		@links
+|!links]
+
+[@約四関連リンク|
+ <section>
+  <article>
+   <H2>関連リンク</H2>
+   <dl>
+    <dt><a href="よんもじ.html" title="よんもじ.html">よんもじ</a></dt>
+    <dd>「yonmoji_ge(よんもじ)」は「約四文字」のサイトジェネレータです。</dd>
+    <dt><a href="やくよん.html" title="やくよん.html">やくよん</a></dt>
+    <dd>「約四文字(やくよん)」は架空の検索エンジンです。</dd>
+    <dt><a href="ぶっくま.html" title="ぶっくま.html">ぶっくま</a></dt>
+    <dd>「ブックマークレット(ぶっくま)」は<br />ブラウザのブックマークで動作する検索ダイアログです。</dd>
+   </dl>
+  </article>
+ </section>
+|@約四関連リンク]
+
+[@links|
+ <section>
+  <article>
+   <H2>関連リンク</H2>
+   <dl>
+    <dt><a href="" title=""></a></dt>
+    <dd></dd>
+   </dl>
+  </article>
+ </section>
+|@links]
+
+[baseHTML|
+<!DOCTYPE html>
+<html lang="ja"><head>
+ <meta charset="UTF-8" />
+<?title?>
+ <link rel="stylesheet" type="text/css" href="yonmoji.css" />
+ <link rel="icon" type="image/png" href="<?sitename?>favicon.png" />
+ <link rel="search" type="application/opensearchdescription+xml" href="<?sitename?>opensearch.xml" title="「約四文字」" />
+ <script src="yonmoji.js"></script>
+</head><body>
+ <header>
+  <div class="yonmoji_root"><a href="<?sitename?>" rel="publisher" title="<?sitename?>">約四<br /></a><a href="<?sitename?>" rel="publisher" title="<?sitename?>">文字</a></div>
+<?breadcrumbs?>
+  <br class="yonmoji_both" />
+ </header>
+<?tagline?>
+<?links?>
+ <section>
+  <article>
+   <H1>詮索しない検索エンジン「約四文字」。</H1>
+   <div class="yonmoji">
+    <p class="yonmoji_logo">約四<br />文字</p>
+    <form id="entry" action="" method="get" onsubmit="newword(); return false;">
+     <p><label>page：<input id="page" type="search" name="page" value="" class="yonmoji_entry"></label> <input type="submit" value="約四文字"></p>
+    </form>
+   </div>
+   <noscript>
+    <p>ブラウザのスクリプト設定を有効にすると「約四文字」は作動します。</p>
+   </noscript>
+  </article>
+ </section>
+ <footer>
+  <p>repository：<a href="https://github.com/<?username?>/yonmoji_ge/" rel="author">github.com/<?username?>/yonmoji_ge/</a></p>
+ </footer>
+</body></html>
+
+
+<!--
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE
+-->
+|baseHTML]
+
+[baseCSS|
+@charset "utf-8";
+@font-face{
+  font-family: "kantray5x5comic";
+  src: url("kantray5x5comic.woff") format('woff');
+}
+body{
+  background-color: white;
+}
+mark{
+  background-color: white;
+  border: 1px pink solid;
+}
+header{
+  border: 1px gray dotted;
+  padding: 1rem;
+}
+ .yonmoji_root{
+   font-family: "kantray5x5comic";  font-size: 1rem;
+   line-height: 1rem;
+   float: left;
+   margin-top: -0.5rem;
+   padding-right: 0.5rem;
+ }
+ .yonmoji_root > a:nth-child(odd){
+   text-decoration: none;
+ }
+ .yonmoji_sitemap{
+   float: right;
+ }
+ yonmoji_both{
+   float: both;
+ }
+section{
+  margin-top: 1rem;
+  border: 2px black solid;
+  padding: 1rem;
+}
+input.yonmoji_entry{
+  border: solid 1px orange;
+  width: 12rem;
+}
+input.yonmoji_entry:focus{
+  border: solid 2px IndianRed;
+}
+ .yonmoji{
+   width: 100%;  margin: 0 auto;
+   text-align: center;
+   padding-top: 1rem;
+   padding-bottom: 0rem;
+ }
+ .yonmoji_logo{
+   font-family: "kantray5x5comic";  font-size: 5rem;
+   line-height: 5rem;
+   margin: 0 auto;
+ }
+ .yonmoji_word{
+   font-family: "kantray5x5comic";  font-size: 2rem;
+   line-height: 2rem;
+   float: left;
+   margin: 0rem;
+ }
+h1{ font-size: 2.0rem; }
+h2{ font-size: 1.8rem; }
+h3{ font-size: 1.6rem; }
+h4{ font-size: 1.4rem; }
+h5{ font-size: 1.2rem; }
+h6{ font-size: 1.0rem; }
+footer{
+  margin-top:1rem;
+  border: 1px gray dotted;
+  text-align: center;
+}
+
+/*
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE
+*/
+|baseCSS]
+
+[baseJS|
+var newpage="index";
+function newhref(){
+    var regExp=new RegExp("[/|\\|:|*|?|\"|<|>|\|\%]","g");
+    window.location.href=newpage.replace(regExp,"")+".html";
+}
+function newquery(){
+    var oldhref=window.location.href;
+    if ( oldhref.indexOf("?page=")>=0 && oldhref.indexOf("github.io/")>=0 ){
+        var regExp=new RegExp("github\.io\/(.*)page\=","g");
+        oldhref=oldhref.replace(regExp,"github.io/");
+        oldhref=oldhref.substr(oldhref.indexOf("github.io/")+"github.io/".length);
+        newpage=decodeURI(oldhref);
+        document.forms.entry.page.value=newpage;
+        setTimeout(newhref,0);
+    }
+    else{
+        newstyle();
+        oldhref=oldhref.substr(oldhref.indexOf("github.io/")+"github.io/".length);
+        if ( oldhref=="" || oldhref=="index.html" ){
+            document.forms.entry.page.focus();
+        }
+    }
+}
+function newword(){
+    newpage=document.forms.entry.page.value;
+    newhref();
+}
+
+if( window.addEventListener ){
+    window.addEventListener('load',newquery,false);
+}
+else if( window.attachEvent ){
+    window.attachEvent('onload',newquery);
+}
+else{
+    window.onload=newquery;
+}
+
+function newstyle(){
+    var styledic={
+     "yonmoji_‎syllogism":           "大小結",
+     "yonmoji_shuhar":              "守破離",
+     "yonmoji_johakyu":             "序破急",
+     "yonmoji_kishoutenketsu":      "起承転結",
+     "yonmoji_kishouhojoketsu":     "起承鋪叙結",
+     "yonmoji_kishouhojokaketsu":   "起承鋪叙過結",
+     "yonmoji_kishouketsu":         "起承結終",
+     "yonmoji_shoutententen":       "承転転転転転転転",
+     "yonmoji_tentententen":        "転転転転転転転転",
+     "yonmoji_kiketsu":             "起結",
+     "yonmoji_tsuriketunige":       "釣結逃",
+     "yonmoji_kiketsushouten":      "起結承転",
+     "yonmoji_ketsushoutentei":     "結承転提",
+     "yonmoji_kishoutenketsuyami":  "起承転結闇",
+     "yonmoji_PDCA":                "ＰＤＣＡＰＤＣＡＰＤＣＡ",
+     "yonmoji_PPPP":                "ＰＰＰＰＰＰＰＰＰＰＰＰ",
+     "yonmoji_DDDD":                "ＤＤＤＤＤＤＤＤＤＤＤＤ",
+     "yonmoji_ganbaru":             "頑頑頑頑頑頑頑頑頑頑頑頑",
+     "yonmoji_asahiruyoru":         "朝昼夜徹明朝昼夜徹明",
+     "yonmoji_QVSA":                "ＱＶＳＡＱＶＳＡＱＶＳＡ",
+     "yonmoji_shunkashutou":        "春夏秋冬春夏秋冬春夏秋冬",
+     "yonmoji_shunbaikashutou":     "春梅夏秋冬春梅夏秋冬春梅夏秋冬",
+     "yonmoji_shunbaikaakisametou": "春梅夏秋雨冬春梅夏秋雨冬春梅夏秋雨冬",
+     "yonmoji_ame":                 "雨雨雨雨雨雨雨雨",
+     "yonmoji_yuki":                "雪雪雪雪雪雪雪雪",
+     "yonmoji_kanki":               "乾乾乾乾乾乾乾乾",
+     "yonmoji_tozainannboku":       "東西南北中",
+     "yonmoji_moshimo":             "忍竜武精死",
+     "yonmoji_seishuhakugen":       "青朱白玄",
+     "yonmoji_biyori":              "最極凶劣",
+     "yonmoji_bunmei":              "独米英仏伊日中韓",
+     "yonmoji_decimal":             "１２３４５６７８９",
+     "yonmoji_circle":              "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳",
+     "yonmoji_ideographic":         "一二三四五六七八九十",
+     "yonmoji_roman":               "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ",
+     "yonmoji_lower-alpha":         "ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ",
+     "yonmoji_upper-alpha":         "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ",
+     "yonmoji_iroha-hiragana":      "いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす",
+     "yonmoji_iroha-katakana":      "イロハニホヘトチリヌルヲワカヨタレソツネナラムウヰノオクヤマケフコエテアサキユメミシヱヒモセス",
+     "yonmoji_todofuken":           "北青岩城秋形島茨栃群埼千東神潟富石井梨野岐静愛三滋京阪兵奈和鳥根岡広口徳川媛高福佐長熊分宮鹿沖"
+    };
+    var syllogismStyle=document.createElement('style'); syllogismStyle.type="text/css";
+    document.getElementsByTagName('head').item(0).appendChild(syllogismStyle);
+    var stylesheet=document.styleSheets[document.styleSheets.length-1];
+    for( key in styledic ){
+        stylesheet.insertRule("."+key+"{  margin-left: 1rem;  margin-bottom: 3rem;  list-style-type: none;  }",stylesheet.cssRules.length);
+        stylesheet.insertRule("."+key+" li{  margin-bottom: 0.5rem;  text-indent: -2rem;  }",stylesheet.cssRules.length);
+        stylesheet.insertRule("."+key+" li:before{  margin-right: 1rem;  font-size: 1.4rem;  }",stylesheet.cssRules.length);
+        var data=styledic[key].split(""); var i=1;
+        for( char in data ){
+            stylesheet.insertRule("."+key+"  li:nth-child("+i+"):before{ content: '"+data[char]+"'; }",stylesheet.cssRules.length); i++;
+        }
+    }
+}
+
+
+/*
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE
+*/
+|baseJS]
+
+[baseXML|
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>「約四文字」</ShortName>
+  <Description>詮索しない検索エンジン「約四文字」。</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAA8FBMVEXU1NSEhISDg4P///96enqMjIyWlpbExMSGhobY2NhwcHAAAACLi4sKCgp5eXmkpKRnZ2e1tbVXV1eTk5NdXV1fX1+ZmZnJycmYmJiqqqqrq6tra2sVFRW8vLzc3Nyfn5+ysrJAQEC5ubmlpaW/v7+pqamtra1kZGSvr6+cnJzw8PCSkpIrKyshISHT09MWFha0tLTCwsJ4eHhCQkJ9fX2VlZUmJiY1NTVLS0uUlJSOjo6IiIh3d3dWVlYxMTGbm5uxsbFYWFi6urpiYmIzMzNoaGg0NDSjo6OHh4cICAhMTEyAgICsrKy7u7vt7e38/Pxxpqz8AAAAtklEQVR42i2P1RbDMAxDvWrsMXXMzMzMvP//myVp9eA491hyQt8qgEoTfV3q86MXC8BvsKEP3fkhm6csN7BOxxOfa5f0VYLATQAxvwcOW9Oi01oe2Gx5Bxmm02DIo/FkOuP5wrNcGZaGWNEzLX0B0GpDqdMVhbK5fIGLpXKpUuVavdGklDGaNi0ZmREHJ9RLk1ChIS0cIQWiMQUQUN8xFCQ3s0fcvPAx++UWsmgEq80Oh1NzCfAHCykUGF9RBZoAAAAASUVORK5CYII=</Image>
+  <Url type="text/html" method="GET" template="http://ooblog.github.io/?page={searchTerms}" />
+</OpenSearchDescription>
+|baseXML]
+
+#Copyright (c) 2016 ooblog
+#License: MIT
+#https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE

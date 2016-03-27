@@ -362,7 +362,7 @@ def LTsv_widget_getnumber(LTsv_widgetPAGENAME):
         if LTsv_GUI == LTsv_GUI_Tkinter:  widget_s=int(widget_o.get())
     if widget_k == "spin":
         if LTsv_GUI == LTsv_GUI_GTK2:     widget_s=int(ctypes.c_int(LTsv_libgtk.gtk_spin_button_get_value_as_int(widget_o)).value)
-        if LTsv_GUI == LTsv_GUI_Tkinter:  widget_s=int(widget_o.get())
+        if LTsv_GUI == LTsv_GUI_Tkinter:  widget_s=LTsv_intstr0x(widget_o.get())
     if widget_k == "combobox":
         if LTsv_GUI == LTsv_GUI_GTK2:     widget_s=LTsv_libgtk.gtk_combo_box_get_active(widget_o)
     return widget_s

@@ -320,6 +320,14 @@ def LTsv_putmodify(LTsv_text):
     LTsv_text=LTsv_putpage(LTsv_text,"L:Tsv",LTsv_page)
     return LTsv_text
 
+def LTsv_savedir(LTsv_path):
+    LTsv_workdir=os.path.dirname(os.path.normpath(LTsv_path))
+    if not os.path.isdir(LTsv_workdir): os.mkdir(LTsv_workdir)
+
+def LTsv_savedirs(LTsv_path):
+    LTsv_workdir=os.path.dirname(os.path.normpath(LTsv_path))
+    if not os.path.isdir(LTsv_workdir): os.makedirs(LTsv_workdir)
+
 def LTsv_savefile(LTsv_path,LTsv_default=None):
     LTsv_text="" if LTsv_default is None else LTsv_default
     if LTsv_default != None:
@@ -327,6 +335,7 @@ def LTsv_savefile(LTsv_path,LTsv_default=None):
         LTsv_page=LTsv_pushlinerest(LTsv_page,"LTsvver",LTsv_file_ver())
         LTsv_page=LTsv_pushlinerest(LTsv_page,"modify",LTsv_getdaytimestr(overhour=24,diffminute=0))
         LTsv_text=LTsv_putpage(LTsv_text,"L:Tsv",LTsv_page)
+        LTsv_savedir(LTsv_path)
         if sys.version_info.major == 2:
             with open(LTsv_path,'wb') as LTsv_fobj:
                 LTsv_fobj.write(LTsv_text.encode("utf-8"))
@@ -339,6 +348,7 @@ def LTsv_savefile(LTsv_path,LTsv_default=None):
 def LTsv_saveplain(LTsv_path,LTsv_plain):
     LTsv_text="" if LTsv_plain is None else LTsv_plain
     if len(LTsv_text) > 0:
+        LTsv_savedir(LTsv_path)
         if sys.version_info.major == 2:
             with open(LTsv_path,'wb') as LTsv_fobj:
                 LTsv_fobj.write(LTsv_text.encode("utf-8"))
@@ -460,7 +470,6 @@ if __name__=="__main__":
     print("__main__ Python{0.major}.{0.minor}.{0.micro},{1},{2}".format(sys.version_info,sys.platform,sys.stdout.encoding))
     print("")
     test_workdir="./testfile/"
-    if not os.path.isdir(test_workdir): os.mkdir(test_workdir)
     tsvpath=test_workdir+"testfile.tsv"; txtpath=test_workdir+"testfile.txt"; printlog=""
     newfile=LTsv_newfile('__name__=="__main__"',"LTsv8Py"); printlog=LTsv_libc_printf("LTsv_newfile('LTsv8Py')↓\n{0}-eof-".format(newfile),printlog)
     newfile=LTsv_putpage(newfile,"LTsv8Py","stdout\tHelloワールド\u5496\u55B1")
