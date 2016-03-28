@@ -713,7 +713,7 @@ def LTsv_gettimerstr(timeformat=None):
     return LTsv_tf
 
 def LTsv_time_ver():
-    return "20160314M010029"
+    return "20160328M231906"
 
 if __name__=="__main__":
     from LTsv_printf import *

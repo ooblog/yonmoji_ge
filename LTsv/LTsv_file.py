@@ -322,11 +322,11 @@ def LTsv_putmodify(LTsv_text):
 
 def LTsv_savedir(LTsv_path):
     LTsv_workdir=os.path.dirname(os.path.normpath(LTsv_path))
-    if not os.path.isdir(LTsv_workdir): os.mkdir(LTsv_workdir)
+    if not os.path.exists(LTsv_workdir) and not os.path.isdir(LTsv_workdir) and len(LTsv_workdir): os.mkdir(LTsv_workdir)
 
 def LTsv_savedirs(LTsv_path):
     LTsv_workdir=os.path.dirname(os.path.normpath(LTsv_path))
-    if not os.path.isdir(LTsv_workdir): os.makedirs(LTsv_workdir)
+    if not os.path.exists(LTsv_workdir) and not os.path.isdir(LTsv_workdir) and len(LTsv_workdir): os.makedirs(LTsv_workdir)
 
 def LTsv_savefile(LTsv_path,LTsv_default=None):
     LTsv_text="" if LTsv_default is None else LTsv_default
@@ -463,7 +463,7 @@ def LTsv_puppy_issue():
     return LTsv_issue
 
 def LTsv_file_ver():
-    return "20160314M010029"
+    return "20160328M231906"
 
 if __name__=="__main__":
     from LTsv_printf import *

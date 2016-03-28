@@ -116,7 +116,7 @@ LTsv_defkbdformat="ぬ\tふ\tあ\tう\tえ\tお\tや\tゆ\tよ\tわ\tほ\tへ\t�
                  "ち\tと\tし\tは\tき\tく\tま\tの\tり\tれ\tけ\tむ\t" \
                  "つ\tさ\tそ\tひ\tこ\tみ\tも\tね\tる\tめ\tろ\t" \
                  "NFER\tSpace\tXFER\tKANA\tMouseL\tMouseR\tMouseC"
-def LTsv_kbdreset(path="LTsv_kbd.tsv"):
+def LTsv_kbdreset(LTsv_tsvpath):
     global LTsv_kbddevpath,LTsv_kbdhands,LTsv_mousedevpath,LTsv_mousehands
     global LTsv_typekanaW,LTsv_typekanaL,LTsv_typecodeW,LTsv_typecodeL
     global LTsv_typenameW,LTsv_typenameL,LTsv_typegana
@@ -125,7 +125,7 @@ def LTsv_kbdreset(path="LTsv_kbd.tsv"):
     global LTsv_keyboard_kanmapN,LTsv_keyboard_kanmapX,LTsv_keyboard_tofu,LTsv_keyboard_kandic,LTsv_keyboard_irohatype,LTsv_keyboard_alphatype,LTsv_keyboard_dictype
     global LTsv_keyboard_findN,LTsv_keyboard_findX,LTsv_keyboard_findNr,LTsv_keyboard_findXr
 
-    LTsv_kbdltsv=LTsv_loadfile(path)
+    LTsv_kbdltsv=LTsv_loadfile(LTsv_tsvpath)
     LTsv_deviceL_page=LTsv_getpage(LTsv_kbdltsv,"LTsv_deviceL")
     if len(LTsv_deviceL_page) > 0:
         LTsv_kbddevpath=LTsv_readlinerest(LTsv_deviceL_page,"kbd")
@@ -266,10 +266,10 @@ def LTsv_kbdexit():
             except OSError as err:
                 print("OSError({0}):{1}".format(err.errno,err.strerror))
 
-def LTsv_kbdinit(LTsv_initmouse=False):
+def LTsv_kbdinit(LTsv_tsvpath="LTsv/LTsv_kbd.tsv",LTsv_initmouse=False):
     global LTsv_kbddevpath,LTsv_kbdhands,LTsv_mousedevpath,LTsv_mousehands
     LTsv_kbdexit()
-    LTsv_kbdreset()
+    LTsv_kbdreset(LTsv_tsvpath)
     if sys.platform.startswith("win"):
         pass
     if sys.platform.startswith("linux"):
@@ -445,7 +445,7 @@ def LTsv_keyboard_findNX():
     return LTsv_keyboard_findN,LTsv_keyboard_findX,LTsv_keyboard_findNr,LTsv_keyboard_findXr
 
 def LTsv_kbd_ver():
-    return "20160314M010029"
+    return "20160328M231906"
 
 if __name__=="__main__":
     from LTsv_printf import *

@@ -1611,7 +1611,7 @@ def LTsv_notifyicon_new(LTsv_windowPAGENAME,notify_n=None,widget_t="",widget_u="
     return LTsv_widgetPAGENAME
 
 def LTsv_gui_ver():
-    return "20160314M010029"
+    return "20160328M231906"
 
 def debug_canvas(window_objvoid=None,window_objptr=None):
     global debug_scaleRGB

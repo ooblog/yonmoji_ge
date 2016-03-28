@@ -8,7 +8,7 @@ modify	20160314M010029
 |L:Tsv]
 
 [*siteconfig|
-inputTSV	./yakuyon/<!pagename!>.tsv
+rewriteTSV	./yakuyon/<!pagename!>.tsv
 outputHTML	../<!pagename!>.html
 outputCSS	../yakuyon.css
 outputJS	../yakuyon.js
@@ -17,14 +17,13 @@ datename	@000y-@0m-@0dm
 datetag		@000y-@0m
 |*siteconfig]
 
-[*inputlist|
+[*rewritelist|
 <?title?>	!title
 <?breadcrumbs?>	!breadcrumbs
 <?tagline?>	!tagline
 <?links?>	!links
-<?pagename?>	<!pagename!>
-<?sitename?>	http://<!username!>.github.io/
-|*inputlist]
+<?sitename?>	!sitename
+|*rewritelist]
 
 [!title|
 index	@title_yonmoji
@@ -214,6 +213,14 @@ index		None
   </article>
  </section>
 |@links]
+
+[!sitename|
+*		@sitename
+|!sitename]
+
+[@sitename|
+http://<!username!>.github.io/
+|@sitename]
 
 [baseHTML|
 <!DOCTYPE html>
