@@ -66,6 +66,9 @@ target/
 # git push github:ooblog/yonmoji_ge.git switchcase
 # git log
 # git commit -a -m ""
+# git branch
+# git checkout master
+# git merge branch
 pages/
 yakuyon/
 kantray.*
