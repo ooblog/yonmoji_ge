@@ -68,50 +68,24 @@ def yonmoji_siteload(sitename):
     yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
     yonmoji_entry_T[yonmoji_column_page].sort()
     yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
-    yonmoji_entry_T[yonmoji_column_rewrite].sort()
 
 def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
     yonmoji_pagefile=LTsv_loadfile(yonmoji_rewriteTSV.replace(yonmoji_pagerename,pagename))
-    print("len(yonmoji_pagefile)",len(yonmoji_pagefile))
     if len(yonmoji_pagefile) == 0:
         print("pagemake'",yonmoji_entry_T[yonmoji_column_rewrite],"'")
         yonmoji_pagefile=LTsv_newfile("yonmoji_ge.tsv")
         for yonmoji_rewrite in yonmoji_entry_T[yonmoji_column_rewrite]:
-            rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_pagefile)
-            print("「{0}」---".format(rewrite_text))
-            pass
-#            kantray_IROHAs=kantray_kbdkanas.split('\t') if len(kantray_kbdkanas) > 0 else []
-#            for yonmoji_rewritelist_num in range(len(yonmoji_entry_T[yonmoji_column_rewrite]))):
-#                print("「{0}」---".format(yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num]))
-#                rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num])
-#                print(rewrite_text)
-#                print(rewrite_text)
-#                rewrite_text=LTsv_setpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num])
-        
-#        for yonmoji_inputlist_num in range(yonmoji_inputlist_deno):
-##            inputdef_name,inputdef_case,inputdef_page,inputdef_html="","","",""
-#            if len(yonmoji_fix[yonmoji_inputlist_num]):
-#                inputdef_name=yonmoji_fix[yonmoji_inputlist_num]
-#            if len(yonmoji_def[yonmoji_inputlist_num]):
-#                inputdef_name=yonmoji_def[yonmoji_inputlist_num]
-#            if len(yonmoji_var[yonmoji_inputlist_num]):
-#                inputdef_html=yonmoji_var[yonmoji_inputlist_num]
-#                inputdef_html=inputdef_html.replace("<!pagename!>",pagename)
-#                inputdef_html=inputdef_html.replace("<!datename!>",LTsv_getdaytimestr(yonmoji_datename))
-#                inputdef_html=inputdef_html.replace("<!username!>",yonmoji_username)
-#            if len(inputdef_html) == 0:
-#                inputdef_case=LTsv_getpage(yonmoji_ltsv,inputdef_name)
-#                for inputdef_case_num in range(LTsv_readlinedeno(inputdef_case)):
-#                     inputdef_case_line=LTsv_readlinenum(inputdef_case,inputdef_case_num)
-#                     inputdef_case_first=LTsv_readlinefirsts(inputdef_case_line)
-#                     if inputdef_case_first == pagename or inputdef_case_first == "*":
-#                          inputdef_page=LTsv_readlinerest(inputdef_case,inputdef_case_first)
-#                          break
-#                inputdef_html=LTsv_getpage(yonmoji_ltsv,inputdef_page)
-##            LTsv_widget_settext(yonmoji_entry[yonmoji_inputlist_num],inputdef_html)
-
-    LTsv_widget_settext(yonmoji_button[yonmoji_column_page],yonmoji_label_T[yonmoji_column_page])
+            rewrite_name=LTsv_readlinerest(yonmoji_rewritelist,yonmoji_rewrite)
+            rewrite_cases=LTsv_getpage(yonmoji_sitefile,rewrite_name).split('\n')
+            for rewrite_case in rewrite_cases:
+                rewrite_case_first=LTsv_readlinefirsts(rewrite_case)
+                if rewrite_case_first == pagename or rewrite_case_first == "*":
+                    rewrite_page=LTsv_readlinerest(rewrite_case,rewrite_case_first)
+                    print("rewrite_page\n",rewrite_page)
+                    yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,LTsv_getpage(yonmoji_sitefile,rewrite_page))
+                    break
+    yonmoji_rewriteread(LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite]))
 
 def yonmoji_rewriteread(rewritename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
@@ -121,18 +95,6 @@ def yonmoji_rewriteread(rewritename):
     LTsv_widget_settext(yonmoji_button[yonmoji_column_rewrite],yonmoji_label_T[yonmoji_column_rewrite])
 
 def yonmoji_column_count(column=yonmoji_column_site):
-#    if column == yonmoji_column_site:
-#        yonmoji_entry_T[yonmoji_column_site]=list(set(yonmoji_sitelist.strip('\n').split('\n')))
-#        yonmoji_entry_T[yonmoji_column_site].sort()
-#    if column == yonmoji_column_page:
-#        yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
-#        LTsv_savedir(yonmoji_path)
-#        yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
-#        yonmoji_entry_T[yonmoji_column_page].sort()
-#        yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
-#        yonmoji_entry_T[yonmoji_column_rewrite].sort()
-#        print("if column == yonmoji_column_page:")
-#    yonmoji_entry_T[column].sort()
     LTsv_scale_adjustment(yonmoji_scale[column],widget_s=0,widget_e=max(len(yonmoji_entry_T[column])-1,0))
     LTsv_scale_adjustment(yonmoji_spin[column],widget_s=0,widget_e=max(len(yonmoji_entry_T[column])-1,0))
     if column == yonmoji_column_site:
@@ -195,20 +157,15 @@ def yonmoji_button_shell(column):
         global yonmoji_pagerename,yonmoji_datarename,yonmoji_userrename
         if column == yonmoji_column_page:
             LTsv_putdaytimenow()
-            print("yonmoji_column_page")
             entry=LTsv_widget_gettext(yonmoji_entry[yonmoji_column_page])
             entry=yonmoji_pathcheck(entry)
             LTsv_widget_settext(yonmoji_entry[yonmoji_column_page],entry)
-            print("entry",entry)
             yonmoji_baseHTML=LTsv_getpage(yonmoji_sitefile,"baseHTML")
-            for yonmoji_rewritelist_num in range(len(yonmoji_entry_T[yonmoji_column_rewrite])):
-                print("「{0}」---".format(yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num]))
-                rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num])
-                print(rewrite_text)
-                yonmoji_baseHTML=yonmoji_baseHTML.replace(yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_rewritelist_num],rewrite_text)
+            for yonmoji_rewrite in yonmoji_entry_T[yonmoji_column_rewrite]:
+                rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_rewrite)
+                yonmoji_baseHTML=yonmoji_baseHTML.replace(yonmoji_rewrite,rewrite_text.rstrip('\n'))
             yonmoji_baseHTML=yonmoji_rename(yonmoji_baseHTML)
-            print(yonmoji_rename(yonmoji_outputHTML))
-            LTsv_savefile(yonmoji_rename(yonmoji_outputHTML),yonmoji_pagefile)
+            LTsv_saveplain(yonmoji_rename(yonmoji_outputHTML),yonmoji_baseHTML)
             LTsv_widget_settext(yonmoji_button[yonmoji_column_page],LTsv_getdaytimestr("rewrite({0})".format(yonmoji_pagetime)))
         if column == yonmoji_column_rewrite:
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])],LTsv_widget_gettext(yonmoji_rewrite_edit))

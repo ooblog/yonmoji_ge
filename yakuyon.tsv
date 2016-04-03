@@ -31,11 +31,11 @@ index	@title_yonmoji
 |!title]
 
 [@title_yonmoji|
- <title>「約四文字」(<?username?>.github.io)</title>
+ <title>「約四文字」(<!username!>.github.io)</title>
 |@title_yonmoji]
 
 [@title_pagr-yonmoji|
- <title><?pagename?> - 「約四文字」(<?username?>.github.io)</title>
+ <title><?pagename?> - 「約四文字」(<!username!>.github.io)</title>
 |@title_pagr-yonmoji]
 
 [!breadcrumbs|
@@ -254,7 +254,7 @@ http://<!username!>.github.io/
   </article>
  </section>
  <footer>
-  <p>repository：<a href="https://github.com/<?username?>/yonmoji_ge/" rel="author">github.com/<?username?>/yonmoji_ge/</a></p>
+  <p>repository：<a href="https://github.com/<!username!>/yonmoji_ge/" rel="author">github.com/<!username!>/yonmoji_ge/</a></p>
  </footer>
 </body></html>
 
