@@ -22,7 +22,7 @@ datetag		@000y-@0m
 <?breadcrumbs?>	!breadcrumbs
 <?tagline?>	!tagline
 <?links?>	!links
-<?sitename?>	!sitename
+<?sitename?>	http://<!username!>.github.io/
 |*rewritelist]
 
 [!title|
@@ -35,7 +35,7 @@ index	@title_yonmoji
 |@title_yonmoji]
 
 [@title_pagr-yonmoji|
- <title><?pagename?> - 「約四文字」(<!username!>.github.io)</title>
+ <title><!pagename!> - 「約四文字」(<!username!>.github.io)</title>
 |@title_pagr-yonmoji]
 
 [!breadcrumbs|
@@ -49,11 +49,11 @@ index	@root_404
 |@root_404]
 
 [@root>404|
-  <span> &#62; <mark><?pagename?></mark></span>
+  <span> &#62; <mark><!pagename!></mark></span>
 |@root>404]
 
 [@root>page_404|
-  <span> &#62; <mark><?pagename?></mark></span>
+  <span> &#62; <mark><!pagename!></mark></span>
   <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
 |@root>page_404]
 
@@ -92,7 +92,7 @@ index		None
   <article>
    <div class="yonmoji">
     <H2 class="yonmoji_word">よん<br />もじ</H2>
-    <H3>「<dfn>yonmoji_ge(<abbr title="yonmoji_ge"><?pagename?></abbr>)</dfn>」」は<br />「約四文字」のサイトジェネレータです。</H3>
+    <H3>「<dfn>yonmoji_ge(<abbr title="yonmoji_ge"><!pagename!></abbr>)</dfn>」」は<br />「約四文字」のサイトジェネレータです。</H3>
     <br class="yonmoji_both" />
    </div>
    <ol class="yonmoji_ketsushoutentei">
@@ -113,7 +113,7 @@ index		None
   <article>
    <div class="yonmoji">
     <H2 class="yonmoji_word">やく<br />よん</H2>
-    <H3>「<dfn>約四文字(<abbr title="約四文字"><?pagename?></abbr>)</dfn>」は<br />架空の検索エンジンです。</H3>
+    <H3>「<dfn>約四文字(<abbr title="約四文字"><!pagename!></abbr>)</dfn>」は<br />架空の検索エンジンです。</H3>
     <br class="yonmoji_both" />
    </div>
    <ol class="yonmoji_kiketsushouten">
@@ -134,7 +134,7 @@ index		None
   <article>
    <div class="yonmoji">
     <H2 class="yonmoji_word">ぶっ<br />くま</H2>
-    <H3>「<dfn>ブックマークレット<abbr title="ブックマークレット">(<?pagename?>)</abbr></dfn>」は<br />ブラウザのブックマークで動作する検索ダイアログです。</H3>
+    <H3>「<dfn>ブックマークレット<abbr title="ブックマークレット">(<!pagename!>)</abbr></dfn>」は<br />ブラウザのブックマークで動作する検索ダイアログです。</H3>
     <br class="yonmoji_both" />
    </div>
    <ol class="yonmoji_kiketsushouten">
@@ -144,11 +144,11 @@ index		None
     <li>
      実は「<a href="javascript:(function(){%20var%20d=document;var%20s=d.selection?d.selection.createRange().text:d.getSelection();%20var%20t=prompt('page%EF%BC%9A['+s+']%E7%B4%84%E5%9B%9B%E6%96%87%E5%AD%97',s);%20if(t.length>0){var%20regExp=new%20RegExp('[/|\\|:|*|?|<|>|\|]','g');t=t.replace(regExp,'');window.open('<?sitename?>'+t+'.html');}%20})();" title="「約四文字」検索ダイアログ(ブックマークレット)">「約四文字」検索ダイアログ</a>」をブックマークに登録するよりも、<br />
      ブラウザ右上の検索バーから「<a href=""<?sitename?>opensearch.xml" title="<?sitename?>opensearch.xml">opensearch.xml</a>」を登録するといわゆる「検索プロバイダー」っぽく、<br />
-     URL「http://<?sitename?>?page=<?pagename?>」を発行させてより検索っぽい挙動に寄せる事も可能です。<br />
+     URL「http://<?sitename?>?page=<!pagename!>」を発行させてより検索っぽい挙動に寄せる事も可能です。<br />
     </li>
    </ol>
    <p>
-    本来「/?page=<?pagename?>」といったクエリーはGitHubで動きません。<br />
+    本来「/?page=<!pagename!>」といったクエリーはGitHubで動きません。<br />
     JavaScriptでそれっぽく見せてるだけなので勘違いを伝聞しないよう注意。<br />
     一旦トップページ(<a href="index.html" title="index.html">index.html</a>)を読み込むのが二度手間だし鯖負荷だしなのでブックマークレット推奨なのです。<br />
    </p>
@@ -160,8 +160,8 @@ index		None
  <section>
   <article>
    <div class="yonmoji">
-    <H2 class="yonmoji_word"><?pagename?><br /></H2>
-    <H3>「<dfn>□□(<abbr title=""><?pagename?></abbr>)</dfn>」は○○です。</H3>
+    <H2 class="yonmoji_word"><!pagename!><br /></H2>
+    <H3>「<dfn>□□(<abbr title=""><!pagename!></abbr>)</dfn>」は○○です。</H3>
     <br class="yonmoji_both" />
    </div>
    <ol class="yonmoji_kishoutenketsu">

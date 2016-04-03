@@ -73,18 +73,21 @@ def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
     yonmoji_pagefile=LTsv_loadfile(yonmoji_rewriteTSV.replace(yonmoji_pagerename,pagename))
     if len(yonmoji_pagefile) == 0:
-        print("pagemake'",yonmoji_entry_T[yonmoji_column_rewrite],"'")
         yonmoji_pagefile=LTsv_newfile("yonmoji_ge.tsv")
         for yonmoji_rewrite in yonmoji_entry_T[yonmoji_column_rewrite]:
             rewrite_name=LTsv_readlinerest(yonmoji_rewritelist,yonmoji_rewrite)
-            rewrite_cases=LTsv_getpage(yonmoji_sitefile,rewrite_name).split('\n')
-            for rewrite_case in rewrite_cases:
-                rewrite_case_first=LTsv_readlinefirsts(rewrite_case)
-                if rewrite_case_first == pagename or rewrite_case_first == "*":
-                    rewrite_page=LTsv_readlinerest(rewrite_case,rewrite_case_first)
-                    print("rewrite_page\n",rewrite_page)
-                    yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,LTsv_getpage(yonmoji_sitefile,rewrite_page))
-                    break
+            rewrite_casedata=LTsv_getpage(yonmoji_sitefile,rewrite_name)
+            rewrite_pagedata=""
+            if len(rewrite_casedata) == 0:
+                rewrite_pagedata=rewrite_name
+            else:
+                rewrite_cases=rewrite_casedata.split('\n')
+                for rewrite_case in rewrite_cases:
+                    rewrite_case_first=LTsv_readlinefirsts(rewrite_case)
+                    if rewrite_case_first == pagename or rewrite_case_first == "*":
+                        rewrite_pagedata=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(rewrite_case,rewrite_case_first))
+                        break
+            yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,rewrite_pagedata)
     yonmoji_rewriteread(LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite]))
 
 def yonmoji_rewriteread(rewritename):

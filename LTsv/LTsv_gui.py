@@ -10,8 +10,11 @@ import struct
 import uuid
 import datetime
 import math
-from LTsv_kbd  import *
 from LTsv_file import *
+try:
+    from LTsv_kbd  import *
+except:
+    pass
 LTsv_Tkinter=True
 try:
     import tkinter as Tk
