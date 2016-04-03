@@ -214,23 +214,15 @@ index		None
  </section>
 |@links]
 
-[!sitename|
-*		@sitename
-|!sitename]
-
-[@sitename|
-http://<!username!>.github.io/
-|@sitename]
-
 [baseHTML|
 <!DOCTYPE html>
 <html lang="ja"><head>
  <meta charset="UTF-8" />
 <?title?>
- <link rel="stylesheet" type="text/css" href="yonmoji.css" />
+ <link rel="stylesheet" type="text/css" href="yakuyon.css" />
  <link rel="icon" type="image/png" href="<?sitename?>favicon.png" />
  <link rel="search" type="application/opensearchdescription+xml" href="<?sitename?>opensearch.xml" title="「約四文字」" />
- <script src="yonmoji.js"></script>
+ <script src="yakuyon.js"></script>
 </head><body>
  <header>
   <div class="yonmoji_root"><a href="<?sitename?>" rel="publisher" title="<?sitename?>">約四<br /></a><a href="<?sitename?>" rel="publisher" title="<?sitename?>">文字</a></div>
@@ -320,6 +312,8 @@ input.yonmoji_entry:focus{
  .yonmoji_logo{
    font-family: "kantray5x5comic";  font-size: 5rem;
    line-height: 5rem;
+   width: 10rem;
+   height: 10rem;
    margin: 0 auto;
  }
  .yonmoji_word{

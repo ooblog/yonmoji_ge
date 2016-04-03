@@ -62,17 +62,17 @@ def yonmoji_siteload(sitename):
         yonmoji_siteconfig=""
         yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
         yonmoji_datename,yonmoji_datetag="@000y-@0m-@0dm","@000y-@0m"
-        yonmoji_rewritelist="<?debug?>\n"
+        yonmoji_rewritelist=""
     yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
     LTsv_savedir(yonmoji_path)
     yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
-    yonmoji_entry_T[yonmoji_column_page].sort()
     yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
 
 def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
+    global yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML
     yonmoji_pagefile=LTsv_loadfile(yonmoji_rewriteTSV.replace(yonmoji_pagerename,pagename))
-    if len(yonmoji_pagefile) == 0:
+    if len(yonmoji_pagefile) == 0 and len(yonmoji_sitefile) > 0:
         yonmoji_pagefile=LTsv_newfile("yonmoji_ge.tsv")
         for yonmoji_rewrite in yonmoji_entry_T[yonmoji_column_rewrite]:
             rewrite_name=LTsv_readlinerest(yonmoji_rewritelist,yonmoji_rewrite)
@@ -89,17 +89,22 @@ def yonmoji_pageload(pagename):
                         break
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,rewrite_pagedata)
     yonmoji_rewriteread(LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite]))
+    LTsv_widget_settext(yonmoji_button[yonmoji_column_page],yonmoji_label_T[yonmoji_column_page])
 
 def yonmoji_rewriteread(rewritename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
     yonmoji_switchlist=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(yonmoji_sitefile,rewritename))
-    rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])])
+    rewrite_text=""
+    if len(yonmoji_sitefile) > 0:
+        rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])])
     LTsv_widget_settext(yonmoji_rewrite_edit,rewrite_text)
     LTsv_widget_settext(yonmoji_button[yonmoji_column_rewrite],yonmoji_label_T[yonmoji_column_rewrite])
 
 def yonmoji_column_count(column=yonmoji_column_site):
     LTsv_scale_adjustment(yonmoji_scale[column],widget_s=0,widget_e=max(len(yonmoji_entry_T[column])-1,0))
     LTsv_scale_adjustment(yonmoji_spin[column],widget_s=0,widget_e=max(len(yonmoji_entry_T[column])-1,0))
+    LTsv_widget_disableenable(yonmoji_button[yonmoji_column_page],True if len(yonmoji_rewritelist) > 0 else False)
+    LTsv_widget_disableenable(yonmoji_button[yonmoji_column_rewrite],True if len(yonmoji_rewritelist) > 0 else False)
     if column == yonmoji_column_site:
         LTsv_widget_setnumber(yonmoji_scale[column],0)
         LTsv_widget_setnumber(yonmoji_spin[column],0)
@@ -170,6 +175,18 @@ def yonmoji_button_shell(column):
             yonmoji_baseHTML=yonmoji_rename(yonmoji_baseHTML)
             LTsv_saveplain(yonmoji_rename(yonmoji_outputHTML),yonmoji_baseHTML)
             LTsv_widget_settext(yonmoji_button[yonmoji_column_page],LTsv_getdaytimestr("rewrite({0})".format(yonmoji_pagetime)))
+            yonmoji_baseCSS=LTsv_getpage(yonmoji_sitefile,"baseCSS")
+            if len(yonmoji_baseCSS):
+                if not os.path.isfile(yonmoji_rename(yonmoji_outputCSS)):
+                    LTsv_saveplain(yonmoji_rename(yonmoji_outputCSS),yonmoji_baseCSS)
+            yonmoji_baseJS=LTsv_getpage(yonmoji_sitefile,"baseJS")
+            if len(yonmoji_baseJS):
+                if not os.path.isfile(yonmoji_rename(yonmoji_outputJS)):
+                    LTsv_saveplain(yonmoji_rename(yonmoji_outputJS),yonmoji_baseJS)
+            yonmoji_baseXML=LTsv_getpage(yonmoji_sitefile,"baseXML")
+            if len(yonmoji_baseXML):
+                if not os.path.isfile(yonmoji_rename(yonmoji_outputXML)):
+                    LTsv_saveplain(yonmoji_rename(yonmoji_outputXML),yonmoji_baseXML)
         if column == yonmoji_column_rewrite:
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])],LTsv_widget_gettext(yonmoji_rewrite_edit))
             LTsv_savefile(yonmoji_rename(yonmoji_rewriteTSV),yonmoji_pagefile)
@@ -186,13 +203,13 @@ def yonmoji_rename(name):
 
 LTsv_GUI=LTsv_guiinit()
 if len(LTsv_GUI) > 0:
-    yonmoji_entry_T=[["site0","siteN"],["psge0","psgeN"],["rewrite0","rewriteN"],["switch0","switchN"]]
+    yonmoji_entry_T=[["site0","siteN"],["psge0","psgeN"],["rewrite0","rewriteN"]]
     yonmoji_configload()
     yonmoji_entry_H=yonmoji_fontsize*2; yonmoji_column_H=yonmoji_entry_H*2; yonmoji_column_Y=0
     yonmoji_window=LTsv_window_new(widget_t="yonmoji_ge",event_b=LTsv_window_exit,widget_w=yonmoji_W,widget_h=yonmoji_H)
     yonmoji_label,yonmoji_button,yonmoji_entry,yonmoji_scale,yonmoji_spin=[None]*yonmoji_column_len,[None]*yonmoji_column_len,[None]*yonmoji_column_len,[None]*yonmoji_column_len,[None]*yonmoji_column_len
     yonmoji_scale_call=[None]*yonmoji_column_len
-    yonmoji_label_T="site","page(HTML)","rewrite(TSV)","switch"
+    yonmoji_label_T="site","page(HTML)","rewrite(TSV)"
     for column in range(yonmoji_column_len):
         yonmoji_column_Y=yonmoji_column_H*column
         yonmoji_entryID=LTsv_widget_newUUID
@@ -207,6 +224,6 @@ if len(LTsv_GUI) > 0:
     yonmoji_column_Y=yonmoji_column_H*yonmoji_column_len
     yonmoji_rewrite_edit=LTsv_edit_new(yonmoji_window,widget_t="",widget_x=0,widget_y=yonmoji_column_Y,widget_w=yonmoji_W,widget_h=yonmoji_H-yonmoji_column_Y,widget_f=yonmoji_font)
     LTsv_widget_showhide(yonmoji_window,True)
-    yonmoji_column_count()
+    yonmoji_column_count(yonmoji_column_site)
     LTsv_window_main(yonmoji_window)
 
