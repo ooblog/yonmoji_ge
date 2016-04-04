@@ -40,7 +40,6 @@ def yonmoji_configload():
     yonmoji_username=LTsv_readlinerest(yonmoji_config,"username",yonmoji_username)
     yonmoji_pagetime=LTsv_readlinerest(yonmoji_config,"pagetime",yonmoji_pagetime)
     yonmoji_rewritetime=LTsv_readlinerest(yonmoji_config,"rewritetime",yonmoji_rewritetime)
-#    yonmoji_entry_T[yonmoji_column_site]=list(set(yonmoji_sitelist.strip('\n').split('\n')))
     yonmoji_entry_T[yonmoji_column_site]=list(yonmoji_sitelist.strip('\n').split('\n'))
 
 def yonmoji_siteload(sitename):

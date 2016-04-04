@@ -1,0 +1,156 @@
+[L:Tsv|
+code	UTF-8
+enter	LF
+tab	8
+program	yonmoji_ge.py
+LTsvver	20160314M010029
+modify	20160314M010029
+|L:Tsv]
+
+[*siteconfig|
+rewriteTSV	./test/<!pagename!>.tsv
+outputHTML	../<!username!>.github.io/test/<!pagename!>.html
+outputCSS	../<!username!>.github.io/test/test.css
+outputJS	../<!username!>.github.io/test/test.js
+outputXML	../<!username!>.github.io/test/opensearch.xml
+datename	@000y-@0m-@0dm
+datetag		@000y-@0m
+|*siteconfig]
+
+[*rewritelist|
+<?title?>	!title
+<?contents?>	!contents
+<?sitename?>	http://<!username!>.github.io/test/
+|*rewritelist]
+
+[!title|
+index	@title_index
+gozen	@title_gozen
+gogo	@title_gogo
+|!title]
+
+[@title_index|
+ <title>GitHub Pages 動作確認テスト。(<?sitename?>)</title>
+|@title_index]
+
+[@title_gozen|
+ <title>「test」テストリポジトリ〜その日の午前中にGitHubを使えるようになってもらうマニュアル。(<?sitename?>)</title>
+|@title_gozen]
+
+[@title_gogo|
+ <title>「test」テストリポジトリ〜午前中にGitHubを使えるようになったメンバーにはブランチの管理も覚えてもらうマニュアル。(<?sitename?>)</title>
+|@title_gogo]
+
+[!contents|
+index	@contents_index
+gozen	@contents_gozen
+gogo	@contents_gogo
+|!contents]
+
+[@contents_index|
+  <article>
+   <H2>フォント「kantray5x5comic.woff」動作確認テスト。</H2>
+   <pre class="kantrayFont">
+@font-face {
+  font-family: "kantray5x5comic";
+  src: url("kantray5x5comic.woff") format('woff');
+}
+.kantrayFont {
+  font-family: "kantray5x5comic";
+}
+   </pre>
+  </article>
+|@contents_index]
+
+[@contents_gozen|
+|@contents_gozen]
+
+[@contents_gogo|
+|@contents_gogo]
+
+[baseHTML|
+<!DOCTYPE html>
+<html lang="ja"><head>
+ <meta charset="UTF-8" />
+ <title>GitHub Pages 動作確認テスト。(ooblog.github.io/test)</title>
+ <link rel="stylesheet" type="text/css" href="test.css" />
+</head><body>
+ <header>
+  <p><a href="http://ooblog.github.io/" rel="publisher">ooblog.github.io</a> &#62; <a href="<?sitename?>">test</a> &#62; index</p>
+ </header>
+ <aside>
+  <nav>
+   <p><a href="<?sitename?>">午前の部(基本操作編)</a></p>
+   <p><a href="<?sitename?>">午後の部(ブランチ編)</a></p>
+  </nav>
+ </aside>
+ <section>
+<?contents?>
+ </section>
+ <footer>
+  <p>repository：<a href="https://github.com/ooblog/test" rel="author">github.com/ooblog/test</a></p>
+ </footer>
+</body></html>
+
+
+<!--
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE
+-->
+|baseHTML]
+
+[baseCSS|
+@font-face {
+  font-family: "kantray5x5comic";
+  src: url("../kantray5x5comic.woff") format('woff');
+}
+.kantrayFont {
+  font-family: "kantray5x5comic";
+}
+header{
+  border: 1px gray dotted;
+}
+section{
+  border:2px black solid;
+  margin-top: 1rem;
+  margin-right: 15rem;
+  padding: 1rem;
+}
+aside{
+  border: 1px gray dotted;
+  float: right;
+  width: 12rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+h1{ font-size: 2.0rem; }
+h2{ font-size: 1.8rem; }
+h3{ font-size: 1.6rem; }
+h4{ font-size: 1.4rem; }
+h5{ font-size: 1.2rem; }
+h6{ font-size: 1.0rem; }
+footer{
+  border: 1px gray dotted;
+  float: both;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+/*
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE
+*/
+|baseCSS]
+
+[#baseJS|
+|#baseJS]
+
+[#baseXML|
+|#baseXML]
+
+#Copyright (c) 2016 ooblog
+#License: MIT
+#https://github.com/ooblog/yonmoji_ge/blob/master/LICENSE

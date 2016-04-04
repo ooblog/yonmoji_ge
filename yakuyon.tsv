@@ -9,10 +9,10 @@ modify	20160314M010029
 
 [*siteconfig|
 rewriteTSV	./yakuyon/<!pagename!>.tsv
-outputHTML	../<!pagename!>.html
-outputCSS	../yakuyon.css
-outputJS	../yakuyon.js
-outputXML	../opensearch.xml
+outputHTML	../<!username!>.github.io/<!pagename!>.html
+outputCSS	../<!username!>.github.io/yakuyon.css
+outputJS	../<!username!>.github.io/yakuyon.js
+outputXML	../<!username!>.github.io/opensearch.xml
 datename	@000y-@0m-@0dm
 datetag		@000y-@0m
 |*siteconfig]
@@ -31,11 +31,11 @@ index	@title_yonmoji
 |!title]
 
 [@title_yonmoji|
- <title>「約四文字」(<!username!>.github.io)</title>
+ <title>「約四文字」(<?sitename?>)</title>
 |@title_yonmoji]
 
 [@title_page-yonmoji|
- <title><!pagename!> - 「約四文字」(<!username!>.github.io)</title>
+ <title><!pagename!> - 「約四文字」(<?sitename?>)</title>
 |@title_page-yonmoji]
 
 [!breadcrumbs|
