@@ -40,8 +40,8 @@ def yonmoji_configload():
     yonmoji_username=LTsv_readlinerest(yonmoji_config,"username",yonmoji_username)
     yonmoji_pagetime=LTsv_readlinerest(yonmoji_config,"pagetime",yonmoji_pagetime)
     yonmoji_rewritetime=LTsv_readlinerest(yonmoji_config,"rewritetime",yonmoji_rewritetime)
-    yonmoji_entry_T[yonmoji_column_site]=list(set(yonmoji_sitelist.strip('\n').split('\n')))
-    yonmoji_entry_T[yonmoji_column_site].sort()
+#    yonmoji_entry_T[yonmoji_column_site]=list(set(yonmoji_sitelist.strip('\n').split('\n')))
+    yonmoji_entry_T[yonmoji_column_site]=list(yonmoji_sitelist.strip('\n').split('\n'))
 
 def yonmoji_siteload(sitename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
@@ -58,15 +58,23 @@ def yonmoji_siteload(sitename):
         yonmoji_datename=LTsv_readlinerest(yonmoji_siteconfig,"datename","@000y-@0m-@0dm")
         yonmoji_datetag=LTsv_readlinerest(yonmoji_siteconfig,"datetag","@000y-@0m")
         yonmoji_rewritelist=LTsv_getpage(yonmoji_sitefile,"*rewritelist")
+        yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
+        LTsv_savedir(yonmoji_path)
+        yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
+        if len(yonmoji_entry_T[yonmoji_column_page]) == 0:
+            yonmoji_entry_T[yonmoji_column_page] =["index"]
+        yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
     else:
         yonmoji_siteconfig=""
         yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
         yonmoji_datename,yonmoji_datetag="@000y-@0m-@0dm","@000y-@0m"
         yonmoji_rewritelist=""
-    yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
-    LTsv_savedir(yonmoji_path)
-    yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
-    yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
+        yonmoji_entry_T[yonmoji_column_page]=[]
+        yonmoji_entry_T[yonmoji_column_rewrite]=[]
+#    yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
+#    LTsv_savedir(yonmoji_path)
+#    yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
+#    yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
 
 def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist

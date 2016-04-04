@@ -69,17 +69,9 @@ target/
 # git branch
 # git checkout master
 # git merge branch
+LTsv/testfile/
 pages/
 yakuyon/
-kantray.*
-kanmap.*
-kanchar.*
-kanword.*
-kanfont.*
-kanzip.*
-testfile/
-kanzip/
+test/
 kanfont.svg
-LTsv_joy.*
 favicon_inkscape.svg
-LTsv.txt

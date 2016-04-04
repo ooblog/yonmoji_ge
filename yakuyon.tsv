@@ -27,16 +27,16 @@ datetag		@000y-@0m
 
 [!title|
 index	@title_yonmoji
-*	@title_pagr-yonmoji
+*	@title_page-yonmoji
 |!title]
 
 [@title_yonmoji|
  <title>「約四文字」(<!username!>.github.io)</title>
 |@title_yonmoji]
 
-[@title_pagr-yonmoji|
+[@title_page-yonmoji|
  <title><!pagename!> - 「約四文字」(<!username!>.github.io)</title>
-|@title_pagr-yonmoji]
+|@title_page-yonmoji]
 
 [!breadcrumbs|
 index	@root_404
@@ -455,6 +455,7 @@ function newstyle(){
   <Url type="text/html" method="GET" template="http://ooblog.github.io/?page={searchTerms}" />
 </OpenSearchDescription>
 |baseXML]
+
 
 #Copyright (c) 2016 ooblog
 #License: MIT

@@ -19,6 +19,7 @@ rewritetime	@0h:@0n:@0s
 [sitelist|
 yakuyon
 test
+null
 |sitelist]
 
 [baseHTML|
