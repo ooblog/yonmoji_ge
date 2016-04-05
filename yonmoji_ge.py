@@ -70,10 +70,6 @@ def yonmoji_siteload(sitename):
         yonmoji_rewritelist=""
         yonmoji_entry_T[yonmoji_column_page]=[]
         yonmoji_entry_T[yonmoji_column_rewrite]=[]
-#    yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
-#    LTsv_savedir(yonmoji_path)
-#    yonmoji_entry_T[yonmoji_column_page]=list(map((lambda pages:os.path.splitext(pages)[0]),os.listdir(os.path.dirname(yonmoji_path))))
-#    yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
 
 def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
@@ -102,8 +98,6 @@ def yonmoji_rewriteread(rewritename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
     yonmoji_switchlist=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(yonmoji_sitefile,rewritename))
     rewrite_text=""
-    if len(yonmoji_sitefile) > 0:
-        rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])])
     LTsv_widget_settext(yonmoji_rewrite_edit,rewrite_text)
     LTsv_widget_settext(yonmoji_button[yonmoji_column_rewrite],yonmoji_label_T[yonmoji_column_rewrite])
 
