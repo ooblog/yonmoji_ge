@@ -48,6 +48,7 @@ gogo	@contents_gogo
 |!contents]
 
 [@contents_index|
+ <section>
   <article>
    <H2>フォント「kantray5x5comic.woff」動作確認テスト。</H2>
    <pre class="kantrayFont">
@@ -60,12 +61,25 @@ gogo	@contents_gogo
 }
    </pre>
   </article>
+ </section>
 |@contents_index]
 
 [@contents_gozen|
+ <section>
+  <article>
+  </article>
+  <article>
+  </article>
+ </section>
 |@contents_gozen]
 
 [@contents_gogo|
+ <section>
+  <article>
+  </article>
+  <article>
+  </article>
+ </section>
 |@contents_gogo]
 
 [baseHTML|
@@ -84,9 +98,7 @@ gogo	@contents_gogo
    <p><a href="<?sitename?>">午後の部(ブランチ編)</a></p>
   </nav>
  </aside>
- <section>
 <?contents?>
- </section>
  <footer>
   <p>repository：<a href="https://github.com/ooblog/test" rel="author">github.com/ooblog/test</a></p>
  </footer>

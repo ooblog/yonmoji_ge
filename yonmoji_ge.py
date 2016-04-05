@@ -98,6 +98,10 @@ def yonmoji_rewriteread(rewritename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
     yonmoji_switchlist=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(yonmoji_sitefile,rewritename))
     rewrite_text=""
+    if len(yonmoji_sitefile) > 0:
+        pagename=LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite])
+        if pagename in yonmoji_entry_T[yonmoji_column_rewrite]:
+            rewrite_text=LTsv_getpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][yonmoji_entry_T[yonmoji_column_rewrite].index(pagename)])
     LTsv_widget_settext(yonmoji_rewrite_edit,rewrite_text)
     LTsv_widget_settext(yonmoji_button[yonmoji_column_rewrite],yonmoji_label_T[yonmoji_column_rewrite])
 
