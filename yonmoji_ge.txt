@@ -1,18 +1,18 @@
-「yonmoji_ge」は「約四文字(yonmoji_ge)」サイトジェネレータのPythonによる実装です。
+「yonmoji_ge」は「約四文字(yakuyon)」サイトジェネレータのPythonによる実装です。
 
  ０-0． ライセンス及びソフトの使用の補足ガイドライン
  ０-1． インストール＆アンインストール方法・その他セットアップ方法
  ０-2． その他現在わかっている不具合や今後の課題。
- １-0． [yonmoji_ge.tsv]の編集方法と「約四文字」のサイト構成。
- １-1． タグ「yonmoji_ge」の構成。
- １-2a．項目一覧「inputlist」からの置換タグ「<?username?>」構成。
- １-2b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
- １-3． タグ「baseHTML」の構成。
- １-4． タグ「baseCSS」の構成。
- １-5． タグ「baseJS」の構成。
- １-6． タグ「baseXML」の構成。
- ２．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
- ３．   作者について、例えば連絡先。
+ １．   [yonmoji_ge.tsv]の設定(usernameとサイトの追加はこちら)。
+ ２-0． [yakuyon.tsv]の編集方法と「約四文字」のサイト構成(入力項目の初期設定はこちら)。
+ ２-1a．項目一覧「*inputlist」からの置換タグ「<?username?>」構成。
+ ２-1b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
+ ２-2． タグ「baseHTML」の構成。
+ ２-3． タグ「baseCSS」の構成。
+ ２-4． タグ「baseJS」の構成。
+ ２-5． タグ「baseXML」の構成。
+ ３．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
+ ４．   作者について、例えば連絡先。
 
 
 ０-0． ライセンス及びソフトの使用の補足ガイドライン
@@ -42,28 +42,48 @@
   Websites for you and your projects.
   https://pages.github.com/
 
- １．ローカルリポジトリ[username.github.io]フォルダ内[.gitignore]に「yonmoji_ge/」と書き込んで[yonmoji_ge]フォルダがリポジトリに混入しないようにする。
- ２．「https://github.com/ooblog/yonmoji_ge」から「Download ZIP」でダウンロードした[yonmoji_ge-master.zip]を解凍する(フォルダ[yonmoji_ge-master]ができる)。
- ３．「リポジトリ[username.github.io/yonmoji_ge]フォルダに[yonmoji_ge-master]の中身をコピーする。
- ４．設定ファイル[yonmoji_ge.tsv]内の「yonmoji_ge」タグ内の「username」項目をGitHubアカウント名に交換。
- ５．[yonmoji_ge.py]を起動して「index」をセーブ(「save」ボタン)。[username.github.io]フォルダに[index.html]が作成できたらセットアップ成功。
+  初期設定では「../<!username!>.github.io/<!pagename!>.html」になってます。「../ooblog.github.io/index.html」です。
+  なのでいきなり「yonmoji_ge.tsv」の「username」項目を書き換えて「../username.github.io/index.html」を上書きする設定にするのではなく、
+  「../ooblog.github.io/index.html」などの出力結果を見て「yonmoji_ge」の挙動に慣れてから
+  「yakuyon.tsv」のコピーをを下書きにしたりに「sitelist」に追加したりするといいと思います。
+
+  サイト毎の設定ファイルは「./yakuyon/<!pagename!>.tsv」の様に「yonmoji_ge」の配下に設定しています。設定次第では別フォルダにもファイルは作れますが非推奨です。
+  「yonmoji_ge」は基本的にファイルの上書きはしますが削除はしません(厳密には0バイトのファイルを作成できないですが「L:Tsv」の仕様です)。
+  アンインストールは手動です。フォルダ「yonmoji_ge」と「ooblog.github.io」と「username.github.io」以外にファイルが散らばってる場合、設定の問題です。
+
+  つまり「yonmoji_ge.tsv」「yakuyon.tsv」などの挙動を把握するまでがセットアップです。
 
 
- ０-2． その他現在わかっている不具合や今後の課題。
+０-2． その他現在わかっている不具合や今後の課題。
 
  Python2.7.3(PuppyLinux571JP)およびPython3.4.3(Wine1.7.18)でジェネレータの動作を確認しています。Windows,cygwin,darwinなどでの動作は確認しておりません。
  Firefox45.0.1(Linux)およびOpera12.16(PuppyLinux571JP)でサイトの動作を確認しています。GoogleChromeやInternetExplorerなどでの動作は確認しておりません。
  アスキーアートが崩れる場合はGeanyで"MSゴシック 12"を使うと半角全角が揃うかもです。
  テンプレートを増やして「約四文字」以外のサイト(ブログみたいにRSSなど出力)も作れるようにしておきたい。
- 項目数が増えたら２列目に配置予定。
- 分岐で正規表現も使えるようにしておきたい。
  日付を管理してブログ風のサイトも作れるようにしたり、更新履歴もRSSで出力できるようにしたい。
  カテゴリタグとか仕様すら固まってない。
  「onsubmit」も「addEventListener」で処理したいけどなんとなく動作しない。
+ yonmoji_outputHTMLだけでなくyonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXMLもJSやCSSも初期化置換の対象にしたい。
 
 
-１-0． [yonmoji_ge.tsv]の編集方法と「約四文字」のサイト構成。
+１．   [yonmoji_ge.tsv]の設定(usernameとサイトの追加はこちら)。
 
+ 「username」の「ooblog」を書き換えないと「http://<!username!>.github.io/」が「http://ooblog.github.io/」になってしまいます。
+
+  [yonmoji_ge|                           サイトジェネレータ「yonmoji_ge」の設定です。
+   font_name                             フォント名指定。初期値は「kantray5x5comic」。
+   font_size                             フォントサイズ指定。初期値は「10」。
+   username                              初期値は「ooblog」。あなたはooblogではないのでGitHubアカウント名をここに書く。
+   pagetime                              初期値は「@0h:@0n:@0s」。
+   rewritetime                           初期値は「@0h:@0n:@0s」。
+  [sitelist|                             サイトジェネレータ「yonmoji_ge」のサンプルとして「http://ooblog.github.io/」のWebページの下書きを添付。
+   yakuyon                               リポジトリ「yakuyon」とりあえず作ってみた状態。
+   test                                  リポジトリ「test」の予定。まだ制作途中です。
+   LTsv9kantray                          リポジトリ「LTsv9kantray」の予定。まだ未制作です。
+   yonmoji_ge                            リポジトリ「yonmoji_ge」の予定。まだ未制作です。
+
+
+２-0． [yakuyon.tsv]の編集方法と「約四文字」のサイト構成(入力項目の初期設定はこちら)。
  設定ファイル[yonmoji_ge.tsv]には架空の検索サイト「約四文字」を想定しています。
 
   「約四文字」(ooblog.github.io)
@@ -75,34 +95,27 @@
   「LTsv9kantray(tsvtool9)」は「L:Tsv」の読み書きを中心としたモジュール群と漢字入力「kantray」のPythonによる実装です。
   https://github.com/ooblog/LTsv9kantray
 
-
- １-1． タグ「yonmoji_ge」の構成。
-
- 「username」の「ooblog」を書き換えないと「http://username.github.io/」が「http://ooblog.github.io/」になってしまいます。
-
-  [yonmoji_ge|                           「yonmoji_ge」のファイル保存場所などの設定です。
-   font_name                             フォント名指定。初期値は「kantray5x5comic」。
-   font_size                             フォントサイズ指定。初期値は「10」。
-   pagename                              初期値は「[pagename]」。TSV,HTML,CSS,JS,XMLファイル名を置換するのに使うので文字コードが被るとかでなければ変更しない。
-   inputTSV                              初期値は「./yakuyon/[pagename].tsv」。[yonmoji_ge.py]配下に子フォルダ[yakuyon]を作成してページ毎の[*.tsv]ファイルにWebページのコンテンツを保存。
-   outputHTML                            初期値は「	../[pagename].html」。[yonmoji_ge.py]の親フォルダに[*..html]を作成する。
-   outputCSS                             初期値は「../yonmoji.css」。[yonmoji_ge.py]の親フォルダに[*.css]を作成する。
-   outputJS                              初期値は「../yonmoji.js」。[yonmoji_ge.py]の親フォルダに[*.js]を作成する。
-   outputXML                             初期値は「../opensearch.xml」。[yonmoji_ge.py]の親フォルダに[*.xml]を作成する。
-   datename                              初期値は「@000y-@0m-@0dm」。ページ名を空入力(文字列長さ0もしくは「.」のみ)すると日付(yyyy-mm-dd)がページ名になります。
+  [*siteconfig|
+   rewriteTSV                            初期値は「./yakuyon/<!pagename!>.tsv」。[yonmoji_ge.py]配下に子フォルダ[yakuyon]を作成してページ毎の[*.tsv]ファイルにWebページのコンテンツを保存。
+   outputHTML                            初期値は「../<!pagename!>.html」。[*.html]を作成する。
+   outputCSS                             初期値は「../yonmoji.css」。[*.css]を作成する。
+   outputJS                              初期値は「../yonmoji.js」。[*.js]を作成する。
+   outputXML                             初期値は「../opensearch.xml」。[*.xml]を作成する。
+   datename                              初期値は「@000y-@0m-@0dm」。ページ名を空入力(文字列長さ0もしくは「.」のみ)すると日付ページ名[yyyy-mm-dd.html]になります。
    datetag                               初期値は「@000y-@0m」。日付管理タグ管理は未実装だが、ブログを月単位でまとめる機能とか想定。
-   username                              初期値は「ooblog」あなたはooblogではないのでGitHubアカウント名をここに書く。
+  [*rewritelist|                         
+   <?title?>                             「!title」。
+   <?breadcrumbs?>                       「!breadcrumbs」。
+   <?tagline?>                           「!tagline」。
+   <?links?>                             「!links」。
+   <?sitename?>                          「http://<!username!>.github.io/」。
 
 
-１-2a．項目一覧「inputlist」からの置換タグ「<?username?>」構成。
+２-1a．項目一覧「*inputlist」からの置換タグ「<?username?>」構成。
 
  「baseHTML」の「<??>」を入力項目で置換する仕組み。「<??>」タグはある程度任意に増設可能。
  「inputlist」は上から順番に実行する事を踏まえれば置換内容をさらに置換する階層も可能。
 
-   size:                                 「1」を指定すると改行無しのインライン項目に。「2」以上を指定すると改行有りのブロック項目に。
-   fix:                                  入力させず項目を固定させたい場合に使用。
-   var:                                  インライン項目が指定できる。「[yonmoji_ge|」で指定した設定「<!pagename!>」「<!datename!>」「<!username!>」で置換できる。
-   def:                                  「!」で始まる条件分岐のタグ呼び出し。分岐しなくてもブロック項目の場合は一旦呼び出し。
 
   [inputlist|                            「yonmoji_ge」で編集する項目を指定します。「<??>」を増やすと入力項目も増えます。
    <?title?>                             「!title」タグの分岐呼び出し。「<html lang="ja"><head>」の「<title>」の辺りを置換。
@@ -114,7 +127,7 @@
    <?username?>                          「<!username!>」を「username(ooblog)など」に置換。
 
 
-１-2b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
+２-1b．分岐タグ「!title」からのブロック項目タグ「@title_yonmoji」「@title_pagr-yonmoji」構成。
 
  とりあえず「<title>」編集をベースに分岐について説明。
  「index.html」は「<title>「約四文字」(ooblog.github.io)</title>」と、
@@ -131,7 +144,7 @@
  「inputlist」で説明したように「<?pagename?>」は後から「<!username!>」で置換される。
 
 
- １-3． タグ「baseHTML」の構成。
+２-2． タグ「baseHTML」の構成。
 
  ベースとなるHTMLを「inputlist」の項目で置換していくスタイル。
 
@@ -177,7 +190,7 @@
   </body></html>                         本文の終了と共にHTMLも終了。
 
 
- １-4． タグ「baseCSS」の構成。
+２-3． タグ「baseCSS」の構成。
 
  CSSにも置換機能が必要なのかは未検討。今の所デフォルト以外のCSSは手動で用意する形に。
 
@@ -243,7 +256,7 @@
     text-align: center;                  中央配置。
 
 
-１-5． タグ「baseJS」の構成。
+２-4． タグ「baseJS」の構成。
 
  デフォルト以外にも複数JavaScriptが必要な場合手動で用意してください。
 
@@ -335,7 +348,7 @@
    .yonmoji_‎syllogism li:nth-child(3):before{ content: "結"; }   ３項目目に「結論（三段論法）」
 
 
-１-6． タグ「baseXML」の構成。
+２-5． タグ「baseXML」の構成。
 
  検索エンジンの類が不要の場合「baseXML」タグごと消してしまっても問題無いかと思います。
 
@@ -349,7 +362,7 @@
   </OpenSearchDescription>               OpenSearchの終了と共にXMLも終了。
 
 
-２．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
+３．   ＦＡＱ(そもそも起動しないなどの疑問はこちら)
 
  Ｑ．[kantray.py]をダブルクリックしても起動しない。
  Ａ．Linuxの場合パーミッションで実行が許可されてないのかも。もしWindowsの話でPythonをインストールしてなければ動くはずがないのでPythonをインストール。
@@ -366,6 +379,7 @@
 
  Ｑ．JSやCSSが更新されない。
  Ａ．HTML以外のファイルは「save」ボタン押した時にに１度だけ作成、つまり上書きをしないので[*.css][*.js]を削除。
+     次回バージョンでは毎回上書きする方向に仕様変更するかも。
 
  Ｑ．Base64の画像ってどうやって作るんだよ。
  Ａ．Linuxなら「# base64 favicon.png」とコマンド入力。WindowsだとLhaplusで作れた気がするけど右クリックの動作がWineからは確認できず。
@@ -382,8 +396,13 @@
     【製品とは】 | コピペ博物館
     http://copipe.hakubutsukan.net/laugh/entry-237/
 
+ Ｑ．「約四文字」以外のサイトも作れますか？
+ Ｑ．[test.tsv]とかの解説は？
+ Ａ．[yakuyon.tsv]以外にも「github.com/ooblog」で作成のページの参考サンプルは付属しますが、「約四文字」以外の解説はリソースの都合でカット。
+    ブログの日付とかタグなどの生成は今後の課題。
 
-３．   作者について、例えば連絡先。
+
+４．   作者について、例えば連絡先。
 
  更新情報はGitHubなどを確認してください。
 

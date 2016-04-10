@@ -87,9 +87,16 @@ def yonmoji_pageload(pagename):
                 rewrite_cases=rewrite_casedata.split('\n')
                 for rewrite_case in rewrite_cases:
                     rewrite_case_first=LTsv_readlinefirsts(rewrite_case)
-                    if rewrite_case_first == pagename or rewrite_case_first == "*":
-                        rewrite_pagedata=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(rewrite_case,rewrite_case_first))
+                    rewrite_research=None
+                    try:
+                        rewrite_research=re.search(re.compile(rewrite_case_first),pagename)
+                    except re.error:
+                        print("re.error",rewrite_case_first)
                         break
+                    else:
+                        if rewrite_research:
+                            rewrite_pagedata=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(rewrite_case,rewrite_case_first))
+                            break
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,rewrite_pagedata)
     yonmoji_rewriteread(LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite]))
     LTsv_widget_settext(yonmoji_button[yonmoji_column_page],yonmoji_label_T[yonmoji_column_page])
@@ -232,3 +239,7 @@ if len(LTsv_GUI) > 0:
     yonmoji_column_count(yonmoji_column_site)
     LTsv_window_main(yonmoji_window)
 
+
+# Copyright (c) 2016 ooblog
+# License: MIT
+# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE

@@ -27,7 +27,7 @@ datetag		@000y-@0m
 
 [!title|
 index	@title_yonmoji
-*	@title_page-yonmoji
+.*	@title_page-yonmoji
 |!title]
 
 [@title_yonmoji|
@@ -41,7 +41,7 @@ index	@title_yonmoji
 [!breadcrumbs|
 index	@root_404
 404	@root>404
-*	@root>page_404
+.*	@root>page_404
 |!breadcrumbs]
 
 [@root_404|
@@ -63,7 +63,7 @@ index		None
 よんもじ		@よんもじ
 やくよん		@やくよん
 ぶっくま		@ぶっくま
-*		@page
+.*		@page
 |!tagline]
 
 [@404|
@@ -183,7 +183,7 @@ index		None
 よんもじ		@約四関連リンク
 やくよん		@約四関連リンク
 ぶっくま		@約四関連リンク
-*		@links
+.*		@links
 |!links]
 
 [@約四関連リンク|

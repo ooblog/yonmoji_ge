@@ -23,32 +23,6 @@ LTsv9kantray
 yonmoji_ge
 |sitelist]
 
-[baseHTML|
-<!DOCTYPE html>
-<html lang="ja"><head>
- <meta charset="UTF-8" />
-<?title?>
- <link rel="stylesheet" type="text/css" href="ubdex.css" />
- <link rel="icon" type="image/png" href="<?sitename?>favicon.png" />
- <!-- <link rel="search" type="application/opensearchdescription+xml" href="<?sitename?>opensearch.xml" title="index" /> -->
- <!-- <script src="index.js"></script> -->
-</head><body>
- <header>
-  <nav>
-  </nav>
- </header>
- <section>
-  <article>
-   <H1>index</H1>
-  </article>
- </section>
- <aside>
-  <nav>
-  </nav>
- </aside>
- <footer>
- </footer>
-</body></html>
 
 #Copyright (c) 2016 ooblog
 #License: MIT
