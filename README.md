@@ -47,9 +47,9 @@
 初期設定では[「約四文字&#40;yakuyon&#41;」](http://ooblog.github.io/)を想定したサンプルを同梱してます。
 設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」の編集方法など詳しい事は「[yonmoji_ge.txt](yonmoji_ge.txt)」の方に書いてます。  
 
-## 「L:Tsv」はアプリを作るためのモジュール群です。
+## 「L:Tsv」は「」を動かすためのモジュール群です。
 
-LTSVモジュールの仕様は「[kantray](https://github.com/ooblog/LTsv9kantray)」の方の「[LTsv.txt](https://github.com/ooblog/LTsv9kantray/blob/master/LTsv.txt)」の方に書いてます。  
+「L&#58;Tsv」モジュールの仕様は「[kantray](https://github.com/ooblog/LTsv9kantray)」の方の「[LTsv.txt](https://github.com/ooblog/LTsv9kantray/blob/master/LTsv.txt)」の方に書いてます。  
 
 ## 動作環境。
 

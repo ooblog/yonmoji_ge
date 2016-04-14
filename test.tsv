@@ -12,9 +12,10 @@ rewriteTSV	./test/<!pagename!>.tsv
 outputHTML	../<!username!>.github.io/test/<!pagename!>.html
 outputCSS	../<!username!>.github.io/test/test.css
 outputJS	../<!username!>.github.io/test/test.js
-outputXML	../<!username!>.github.io/test/opensearch.xml
+outputSEARCH	../<!username!>.github.io/test/opensearch.xml
+outputFEED	../<!username!>.github.io/test/Atom.xml
 datename	@000y-@0m-@0dm
-datetag		@000y-@0m
+feedmax		20
 |*siteconfig]
 
 [*rewritelist|
@@ -24,9 +25,9 @@ datetag		@000y-@0m
 |*rewritelist]
 
 [!title|
-index	@title_index
-gozen	@title_gozen
-gogo	@title_gogo
+^index$	@title_index
+^gozen$	@title_gozen
+^gogo$	@title_gogo
 |!title]
 
 [@title_index|
@@ -42,9 +43,9 @@ gogo	@title_gogo
 |@title_gogo]
 
 [!contents|
-index	@contents_index
-gozen	@contents_gozen
-gogo	@contents_gogo
+^index$	@contents_index
+^gozen$	@contents_gozen
+^gogo$	@contents_gogo
 |!contents]
 
 [@contents_index|
@@ -160,8 +161,8 @@ footer{
 [#baseJS|
 |#baseJS]
 
-[#baseXML|
-|#baseXML]
+[#baseSEARCH|
+|#baseSEARCH]
 
 #Copyright (c) 2016 ooblog
 #License: MIT

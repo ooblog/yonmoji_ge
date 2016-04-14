@@ -23,8 +23,8 @@ yonmoji_W,yonmoji_H=yonmoji_label_W+yonmoji_entry_W,600
 yonmoji_username="ooblog"
 yonmoji_pagetime,yonmoji_rewritetime="@0h:@0n:@0s","@0h:@0n:@0s"
 yonmoji_pagerename,yonmoji_datarename,yonmoji_userrename="<!pagename!>","<!datename!>","<!username!>"
-yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
-yonmoji_datename,yonmoji_datetag="@000y-@0m-@0dm","@000y-@0m"
+yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputSEARCH="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
+yonmoji_datename="@000y-@0m-@0dm"
 
 def yonmoji_configload():
     global yonmoji_ltsv,yonmoji_config,yonmoji_sitelist
@@ -44,8 +44,8 @@ def yonmoji_configload():
 
 def yonmoji_siteload(sitename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
-    global yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML
-    global yonmoji_datename,yonmoji_datetag
+    global yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputSEARCH
+    global yonmoji_datename
     yonmoji_sitefile=LTsv_loadfile(sitename+".tsv")
     if len(yonmoji_sitefile):
         yonmoji_siteconfig=LTsv_getpage(yonmoji_sitefile,"*siteconfig")
@@ -53,9 +53,8 @@ def yonmoji_siteload(sitename):
         yonmoji_outputHTML=LTsv_readlinerest(yonmoji_siteconfig,"outputHTML","../<!pagename!>.html")
         yonmoji_outputCSS=LTsv_readlinerest(yonmoji_siteconfig,"outputCSS","../<!pagename!>.css")
         yonmoji_outputJS=LTsv_readlinerest(yonmoji_siteconfig,"outputJS","../<!pagename!>.js")
-        yonmoji_outputXML=LTsv_readlinerest(yonmoji_siteconfig,"outputXML","../<!pagename!>.xml")
+        yonmoji_outputSEARCH=LTsv_readlinerest(yonmoji_siteconfig,"outputSEARCH","../<!pagename!>.xml")
         yonmoji_datename=LTsv_readlinerest(yonmoji_siteconfig,"datename","@000y-@0m-@0dm")
-        yonmoji_datetag=LTsv_readlinerest(yonmoji_siteconfig,"datetag","@000y-@0m")
         yonmoji_rewritelist=LTsv_getpage(yonmoji_sitefile,"*rewritelist")
         yonmoji_path=os.path.normpath(yonmoji_rewriteTSV.replace(yonmoji_pagerename,"index"))
         LTsv_savedir(yonmoji_path)
@@ -65,15 +64,15 @@ def yonmoji_siteload(sitename):
         yonmoji_entry_T[yonmoji_column_rewrite]=LTsv_readlinefirsts(yonmoji_rewritelist).split('\t')
     else:
         yonmoji_siteconfig=""
-        yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
-        yonmoji_datename,yonmoji_datetag="@000y-@0m-@0dm","@000y-@0m"
+        yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputSEARCH="pages/<!pagename!>.tsv","../<!pagename!>.html","../<!pagename!>.css","../<!pagename!>.js","../<!pagename!>.xml"
+        yonmoji_datename="@000y-@0m-@0dm"
         yonmoji_rewritelist=""
         yonmoji_entry_T[yonmoji_column_page]=[]
         yonmoji_entry_T[yonmoji_column_rewrite]=[]
 
 def yonmoji_pageload(pagename):
     global yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist
-    global yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputXML
+    global yonmoji_rewriteTSV,yonmoji_outputHTML,yonmoji_outputCSS,yonmoji_outputJS,yonmoji_outputSEARCH
     yonmoji_pagefile=LTsv_loadfile(yonmoji_rewriteTSV.replace(yonmoji_pagerename,pagename))
     if len(yonmoji_pagefile) == 0 and len(yonmoji_sitefile) > 0:
         yonmoji_pagefile=LTsv_newfile("yonmoji_ge.tsv")
@@ -195,10 +194,10 @@ def yonmoji_button_shell(column):
             if len(yonmoji_baseJS):
                 if not os.path.isfile(yonmoji_rename(yonmoji_outputJS)):
                     LTsv_saveplain(yonmoji_rename(yonmoji_outputJS),yonmoji_baseJS)
-            yonmoji_baseXML=LTsv_getpage(yonmoji_sitefile,"baseXML")
-            if len(yonmoji_baseXML):
-                if not os.path.isfile(yonmoji_rename(yonmoji_outputXML)):
-                    LTsv_saveplain(yonmoji_rename(yonmoji_outputXML),yonmoji_baseXML)
+            yonmoji_baseSEARCH=LTsv_getpage(yonmoji_sitefile,"baseSEARCH")
+            if len(yonmoji_baseSEARCH):
+                if not os.path.isfile(yonmoji_rename(yonmoji_outputSEARCH)):
+                    LTsv_saveplain(yonmoji_rename(yonmoji_outputSEARCH),yonmoji_baseSEARCH)
         if column == yonmoji_column_rewrite:
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_entry_T[yonmoji_column_rewrite][LTsv_widget_getnumber(yonmoji_scale[yonmoji_column_rewrite])],LTsv_widget_gettext(yonmoji_rewrite_edit))
             LTsv_savefile(yonmoji_rename(yonmoji_rewriteTSV),yonmoji_pagefile)

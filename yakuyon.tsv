@@ -12,9 +12,10 @@ rewriteTSV	./yakuyon/<!pagename!>.tsv
 outputHTML	../<!username!>.github.io/<!pagename!>.html
 outputCSS	../<!username!>.github.io/yakuyon.css
 outputJS	../<!username!>.github.io/yakuyon.js
-outputXML	../<!username!>.github.io/opensearch.xml
+outputSEARCH	../<!username!>.github.io/opensearch.xml
+outputFEED	../<!username!>.github.io/atom.xml
 datename	@000y-@0m-@0dm
-datetag		@000y-@0m
+feedmax		20
 |*siteconfig]
 
 [*rewritelist|
@@ -26,21 +27,26 @@ datetag		@000y-@0m
 |*rewritelist]
 
 [!title|
-index	@title_yonmoji
-.*	@title_page-yonmoji
+^index$				@title_yonmoji
+^[0-9]{4}-[0-9]{2}-[0-9]{2}$	@title_blog-yonmoji
+.*				@title_page-yonmoji
 |!title]
 
 [@title_yonmoji|
  <title>「約四文字」(<?sitename?>)</title>
 |@title_yonmoji]
 
+[@title_blog-yonmoji|
+ <title><!pagename!> - 「約四文字」開発ブログ(<?sitename?>)</title>
+|@title_blog-yonmoji]
+
 [@title_page-yonmoji|
  <title><!pagename!> - 「約四文字」(<?sitename?>)</title>
 |@title_page-yonmoji]
 
 [!breadcrumbs|
-index	@root_404
-404	@root>404
+^index$	@root_404
+^404$	@root>404
 .*	@root>page_404
 |!breadcrumbs]
 
@@ -58,11 +64,11 @@ index	@root_404
 |@root>page_404]
 
 [!tagline|
-index		None
-404		@404
-よんもじ		@よんもじ
-やくよん		@やくよん
-ぶっくま		@ぶっくま
+^index$		None
+^404$		@404
+^よんもじ$	@よんもじ
+^やくよん$	@やくよん
+^ぶっくま$	@ぶっくま
 .*		@page
 |!tagline]
 
@@ -178,11 +184,11 @@ index		None
 |@page]
 
 [!links|
-index		None
-404		@約四関連リンク
-よんもじ		@約四関連リンク
-やくよん		@約四関連リンク
-ぶっくま		@約四関連リンク
+^index$		None
+^404$		@約四関連リンク
+^よんもじ$	@約四関連リンク
+^やくよん$	@約四関連リンク
+^ぶっくま$	@約四関連リンク
 .*		@links
 |!links]
 
@@ -322,6 +328,13 @@ input.yonmoji_entry:focus{
    float: left;
    margin: 0rem;
  }
+aside{
+  border: 1px gray dotted;
+  float: right;
+  width: 12rem;
+  margin-top: 1rem;
+  padding: 1rem;
+}
 h1{ font-size: 2.0rem; }
 h2{ font-size: 1.8rem; }
 h3{ font-size: 1.6rem; }
@@ -330,6 +343,7 @@ h5{ font-size: 1.2rem; }
 h6{ font-size: 1.0rem; }
 footer{
   margin-top:1rem;
+  float: both;
   border: 1px gray dotted;
   text-align: center;
 }
@@ -445,7 +459,7 @@ function newstyle(){
 */
 |baseJS]
 
-[baseXML|
+[baseSEARCH|
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
   <ShortName>「約四文字」</ShortName>
@@ -454,7 +468,24 @@ function newstyle(){
   <Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAA8FBMVEXU1NSEhISDg4P///96enqMjIyWlpbExMSGhobY2NhwcHAAAACLi4sKCgp5eXmkpKRnZ2e1tbVXV1eTk5NdXV1fX1+ZmZnJycmYmJiqqqqrq6tra2sVFRW8vLzc3Nyfn5+ysrJAQEC5ubmlpaW/v7+pqamtra1kZGSvr6+cnJzw8PCSkpIrKyshISHT09MWFha0tLTCwsJ4eHhCQkJ9fX2VlZUmJiY1NTVLS0uUlJSOjo6IiIh3d3dWVlYxMTGbm5uxsbFYWFi6urpiYmIzMzNoaGg0NDSjo6OHh4cICAhMTEyAgICsrKy7u7vt7e38/Pxxpqz8AAAAtklEQVR42i2P1RbDMAxDvWrsMXXMzMzMvP//myVp9eA491hyQt8qgEoTfV3q86MXC8BvsKEP3fkhm6csN7BOxxOfa5f0VYLATQAxvwcOW9Oi01oe2Gx5Bxmm02DIo/FkOuP5wrNcGZaGWNEzLX0B0GpDqdMVhbK5fIGLpXKpUuVavdGklDGaNi0ZmREHJ9RLk1ChIS0cIQWiMQUQUN8xFCQ3s0fcvPAx++UWsmgEq80Oh1NzCfAHCykUGF9RBZoAAAAASUVORK5CYII=</Image>
   <Url type="text/html" method="GET" template="http://ooblog.github.io/?page={searchTerms}" />
 </OpenSearchDescription>
-|baseXML]
+|baseSEARCH]
+
+[baseFEED|
+<?xml version="1.0" encoding="utf-8"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#">
+ <title></title>
+ <link rel="alternate" type="text/html" href="<?sitename?>" />
+ <modified></modified>
+ <author><name><!username!></name></author>
+ <entry>
+  <title><?title?></title>
+  <link rel="alternate" type="text/html" href="<?sitename?><!pagename!>.html"/>
+  <id></id>
+  <issued></issued>
+  <modified></modified>
+ </entry>
+</feed>
+|baseFEED]
 
 
 #Copyright (c) 2016 ooblog
