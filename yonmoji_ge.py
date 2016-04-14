@@ -94,7 +94,10 @@ def yonmoji_pageload(pagename):
                         break
                     else:
                         if rewrite_research:
-                            rewrite_pagedata=LTsv_getpage(yonmoji_sitefile,LTsv_readlinerest(rewrite_case,rewrite_case_first))
+                            rewrite_rest=LTsv_readlinerest(rewrite_case,rewrite_case_first)
+                            rewrite_pagedata=LTsv_getpage(yonmoji_sitefile,rewrite_rest)
+                            if len(rewrite_pagedata) == 0:
+                                rewrite_pagedata=rewrite_rest
                             break
             yonmoji_pagefile=LTsv_putpage(yonmoji_pagefile,yonmoji_rewrite,rewrite_pagedata)
     yonmoji_rewriteread(LTsv_widget_gettext(yonmoji_entry[yonmoji_column_rewrite]))

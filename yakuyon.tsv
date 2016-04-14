@@ -20,6 +20,7 @@ feedmax		20
 
 [*rewritelist|
 <?title?>	!title
+<?description?>	!description
 <?breadcrumbs?>	!breadcrumbs
 <?tagline?>	!tagline
 <?links?>	!links
@@ -27,44 +28,25 @@ feedmax		20
 |*rewritelist]
 
 [!title|
-^index$				@title_yonmoji
-^[0-9]{4}-[0-9]{2}-[0-9]{2}$	@title_blog-yonmoji
-.*				@title_page-yonmoji
+^index$				 <title>「約四文字」(<?sitename?>)</title>
+^[0-9]{4}-[0-9]{2}-[0-9]{2}$	 <title><!pagename!> - 「約四文字」開発ブログ(<?sitename?>)</title>
+.*				 <title><!pagename!> - 「約四文字」(<?sitename?>)</title>
 |!title]
 
-[@title_yonmoji|
- <title>「約四文字」(<?sitename?>)</title>
-|@title_yonmoji]
-
-[@title_blog-yonmoji|
- <title><!pagename!> - 「約四文字」開発ブログ(<?sitename?>)</title>
-|@title_blog-yonmoji]
-
-[@title_page-yonmoji|
- <title><!pagename!> - 「約四文字」(<?sitename?>)</title>
-|@title_page-yonmoji]
+[!description|
+^index$				「約四文字」は架空の検索エンジンです。
+^404$				HTTPステータスコード404ページですが、簡易的なサイトマップも兼ねてます。
+.*				「約四文字」上の定義では「<!pagename!>」は○○です。
+|!description]
 
 [!breadcrumbs|
-^index$	@root_404
-^404$	@root>404
-.*	@root>page_404
+^index$				  <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
+^404$				  <span> &#62; <mark><!pagename!></mark></span>
+.*				  <span> &#62; <mark><!pagename!></mark></span> <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
 |!breadcrumbs]
 
-[@root_404|
-  <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
-|@root_404]
-
-[@root>404|
-  <span> &#62; <mark><!pagename!></mark></span>
-|@root>404]
-
-[@root>page_404|
-  <span> &#62; <mark><!pagename!></mark></span>
-  <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
-|@root>page_404]
-
 [!tagline|
-^index$		None
+^index$		
 ^404$		@404
 ^よんもじ$	@よんもじ
 ^やくよん$	@やくよん
@@ -184,7 +166,7 @@ feedmax		20
 |@page]
 
 [!links|
-^index$		None
+^index$		
 ^404$		@約四関連リンク
 ^よんもじ$	@約四関連リンク
 ^やくよん$	@約四関連リンク
@@ -224,6 +206,7 @@ feedmax		20
 <!DOCTYPE html>
 <html lang="ja"><head>
  <meta charset="UTF-8" />
+ <meta name="description" content="<?description?>">
 <?title?>
  <link rel="stylesheet" type="text/css" href="yakuyon.css" />
  <link rel="icon" type="image/png" href="<?sitename?>favicon.png" />
@@ -473,16 +456,17 @@ function newstyle(){
 [baseFEED|
 <?xml version="1.0" encoding="utf-8"?>
 <feed version="0.3" xmlns="http://purl.org/atom/ns#">
- <title></title>
+ <title>「約四文字」(<?sitename?>)</title>
  <link rel="alternate" type="text/html" href="<?sitename?>" />
- <modified></modified>
+ <updated><!updated!></updated>
  <author><name><!username!></name></author>
+ <id><?sitename?>atom,xml</id>
  <entry>
   <title><?title?></title>
   <link rel="alternate" type="text/html" href="<?sitename?><!pagename!>.html"/>
   <id></id>
-  <issued></issued>
-  <modified></modified>
+  <updated><!updated!></updated>
+  <summary><?description?></summary>
  </entry>
 </feed>
 |baseFEED]

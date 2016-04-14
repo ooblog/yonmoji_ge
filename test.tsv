@@ -25,22 +25,10 @@ feedmax		20
 |*rewritelist]
 
 [!title|
-^index$	@title_index
-^gozen$	@title_gozen
-^gogo$	@title_gogo
+^index$	 <title>GitHub Pages 動作確認テスト。(<?sitename?>)</title>
+^gozen$	 <title>「test」テストリポジトリ〜その日の午前中にGitHubを使えるようになってもらうマニュアル。(<?sitename?>)</title>
+^gogo$	 <title>「test」テストリポジトリ〜午前中にGitHubを使えるようになったメンバーにはブランチの管理も覚えてもらうマニュアル。(<?sitename?>)</title>
 |!title]
-
-[@title_index|
- <title>GitHub Pages 動作確認テスト。(<?sitename?>)</title>
-|@title_index]
-
-[@title_gozen|
- <title>「test」テストリポジトリ〜その日の午前中にGitHubを使えるようになってもらうマニュアル。(<?sitename?>)</title>
-|@title_gozen]
-
-[@title_gogo|
- <title>「test」テストリポジトリ〜午前中にGitHubを使えるようになったメンバーにはブランチの管理も覚えてもらうマニュアル。(<?sitename?>)</title>
-|@title_gogo]
 
 [!contents|
 ^index$	@contents_index
