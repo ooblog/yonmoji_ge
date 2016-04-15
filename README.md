@@ -4,10 +4,11 @@
 
 ## セットアップ方法(GitHub Pageを「約四文字」にする)
 
-「ooblog.github.io(sername.github.io)/[.gitignore](../ooblog.github.io/.gitignore)」ファイルに「yonmoji&#95;ge/」フォルダを追加しておく(リポジトリ混入回避)。  
-「yonmoji&#95;ge/」フォルダの中に「yonmoji&#95;ge.&#42;」などの実行環境をコピー。  
-「[yonmoji_ge.py](yonmoji_ge.py)」でページ保存すると「index,html」がリポジトリのルートにできてるか確認。  
-設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」の解説は「[yonmoji_ge.txt](yonmoji_ge.txt)」を参考。  
+「username.github.io」フォルダの親フォルダに「yonmoji&#95;ge」フォルダを作る形でzipを解凍する。  
+もしくは「yakuyon.tsv」の「&#42;siteconfig」内のパスを設定する。  
+「yonmoji&#95;ge.tsv」の「username」項目を「username.github.io」に合わせる。  
+とりあえず様子見の場合設定は最適化せず、あえて「oobog.github.io」フォルダにHT\MLが作成される様子を見てから判断する。
+設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」などの解説は「[yonmoji_ge.txt](yonmoji_ge.txt)」を参考。  
 
 ## ファイルの編集。
 

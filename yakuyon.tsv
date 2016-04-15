@@ -36,7 +36,10 @@ feedmax		20
 [!description|
 ^index$				「約四文字」は架空の検索エンジンです。
 ^404$				HTTPステータスコード404ページですが、簡易的なサイトマップも兼ねてます。
-.*				「約四文字」上の定義では「<!pagename!>」は○○です。
+^よんもじ$			「約四文字」で「<!pagename!>」はサイトジェネレータ「yonmoji_ge」の解説です。
+^やくよん$			「約四文字」で「<!pagename!>」は「約四文字」のサイト解説です。
+^ぶっくま$			「約四文字」で「<!pagename!>」は「約四文字」の検索ブックマークレットです。
+.*				「約四文字」で「<!pagename!>」は○○です。
 |!description]
 
 [!breadcrumbs|
@@ -84,7 +87,7 @@ feedmax		20
     <br class="yonmoji_both" />
    </div>
    <ol class="yonmoji_ketsushoutentei">
-    <li>HTML入力ミス回避やサイト構成ちゃぶ台返し対応とか考えてサイトジェネレータも作った(準備中)。</li>
+    <li>HTML入力ミス回避やサイト構成ちゃぶ台返し対応とか考えてサイトジェネレータも作った。</li>
     <li>「yonmoji_ge.py」の細かい使い方はリポジトリ内の「yonmoji_ge.txt」を参考。<br />(リポジトリ準備できたらリンク貼り直す)</li>
     <li>テンプレの変更部分だけ入力する形にしてページを量産予定。</li>
     <li>設定ファイル「yonmoji_ge.tsv」を書き換える事によって検索サイト以外のサイトも作れるようにはしたいかも。</li>
@@ -235,7 +238,7 @@ feedmax		20
   </article>
  </section>
  <footer>
-  <p>repository：<a href="https://github.com/<!username!>/yonmoji_ge/" rel="author">github.com/<!username!>/yonmoji_ge/</a></p>
+  <p>site generator repository：<a href="https://github.com/<!username!>/yonmoji_ge/" rel="author">github.com/<!username!>/yonmoji_ge/</a></p>
  </footer>
 </body></html>
 
