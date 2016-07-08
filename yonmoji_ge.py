@@ -132,6 +132,8 @@ def yonmoji_column_count(column=yonmoji_column_site):
 def yonmoji_entry_shell(column):
     def yonmoji_entry_kernel(callback_void=None,callback_ptr=None):
         entry=LTsv_widget_gettext(yonmoji_entry[column])
+        if column == yonmoji_column_rewrite:
+            print("yonmoji_column_rewrite reset")
         if entry in yonmoji_entry_T[column]:
             LTsv_widget_setnumber(yonmoji_scale[column],yonmoji_entry_T[column].index(entry))
         else:

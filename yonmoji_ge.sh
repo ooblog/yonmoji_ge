@@ -1,4 +1,4 @@
 #!/bin/sh
 script_dir=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 cd $script_dir
-/mnt/home/Puppy-Linux-571/wine-portable-1.7.18-1-p4/wine-portable "/mnt/home/Puppy-Linux-571/wine-portable-1.7.18-1-p4/wine-data/drive_c/Python34/python.exe yonmoji_ge.py"
+/mnt/home/Tahrpup605/wine-portable-1.7.18-1-p4/wine-portable "/mnt/home/Tahrpup605/wine-portable-1.7.18-1-p4/wine-data/drive_c/Python34/python.exe yonmoji_ge.py"
