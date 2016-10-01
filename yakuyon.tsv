@@ -259,7 +259,7 @@ feedmax		20
    <div class="yonmoji">
     <p class="yonmoji_logo">約四<br />文字</p>
     <form id="entry" action="" method="get" onsubmit="newword(); return false;">
-     <p><label>page：<input id="page" type="search" name="page" value="" placeholder="ふぉんと" class="yonmoji_entry"></label> <input type="submit" value="約四文字"></p>
+     <p><label>page：<input id="page" type="search" name="page" value="" class="yonmoji_entry"></label> <input type="submit" value="約四文字"></p>
     </form>
    </div>
    <noscript>
@@ -384,6 +384,7 @@ function newquery(){
         var regExp=new RegExp("github\.io\/(.*)page\=","g");
         oldhref=oldhref.replace(regExp,"github.io/");
         oldhref=oldhref.substr(oldhref.indexOf("github.io/")+"github.io/".length);
+        oldhref=oldhref.replace("%E2%80%8E","");
         newpage=decodeURI(oldhref);
         document.forms.entry.page.value=newpage;
         setTimeout(newhref,0);
