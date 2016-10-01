@@ -15,7 +15,7 @@ from LTsv_time   import *
 from LTsv_gui    import *
 
 yonmoji_ltsv,yonmoji_config,yonmoji_sitelist="","",""
-yonmoji_fontname,yonmoji_fontsize="kantray5x5comic",10; yonmoji_font="{0},{1}".format(yonmoji_fontname,yonmoji_fontsize)
+yonmoji_fontname,yonmoji_fontsize="kan5x5comic",10; yonmoji_font="{0},{1}".format(yonmoji_fontname,yonmoji_fontsize)
 yonmoji_sitefile,yonmoji_pagefile,yonmoji_siteconfig,yonmoji_rewritelist,yonmoji_switchlist="","","","",""
 yonmoji_column_len=3; yonmoji_column_site,yonmoji_column_page,yonmoji_column_rewrite=0,1,2
 yonmoji_label_W,yonmoji_entry_W,yonmoji_spin_W=200,530,70

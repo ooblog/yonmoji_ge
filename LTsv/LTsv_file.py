@@ -228,6 +228,17 @@ def LTsv_pickdatalabel(LTsv_line,LTsv_label,LTsv_default=None):
         LTsv_data=LTsv_splits[LTsv_posL+len(LTsv_tagL):LTsv_posR]
     return LTsv_data
 
+def LTsv_pickdic(LTsv_text,LTsv_first,LTsv_label):
+    LTsv_data=""
+    LTsv_page='\n'+LTsv_text+'\n'
+    LTsv_tagL='\n'+LTsv_first+'\t'; LTsv_posL=LTsv_page.find(LTsv_tagL)
+    if 0 <= LTsv_posL:
+        LTsv_rest='\t'+LTsv_page[LTsv_posL+len(LTsv_tagL):LTsv_page.find('\n',LTsv_posL+1)]+'\t'
+        LTsv_tagR='\t'+LTsv_label+":"; LTsv_posR=LTsv_rest.find(LTsv_tagR)
+        if 0 <= LTsv_posR:
+            LTsv_data=LTsv_rest[LTsv_posR+len(LTsv_tagR):LTsv_rest.find('\t',LTsv_posR+1)]
+    return LTsv_data
+
 def LTsv_setdatalabel(LTsv_line,LTsv_label,LTsv_default=None):
     LTsv_data="" if LTsv_default is None else LTsv_pickdatanum(LTsv_default,0)
     LTsv_join=LTsv_line; LTsv_splits='\t'+LTsv_line.replace('\n','\t')+'\t'; LTsv_tagL='\t'+LTsv_label+":"
@@ -242,6 +253,17 @@ def LTsv_setdatalabel(LTsv_line,LTsv_label,LTsv_default=None):
             LTsv_join=LTsv_join.rstrip('\t')
             LTsv_join+='\t'+LTsv_label+":"+LTsv_data
     return LTsv_join.strip('\t')
+
+def LTsv_sievelabels(LTsv_rest,LTsv_labels=""):
+    return LTsv_sievetuplelabels(LTsv_rest,*LTsv_tsv2tuple(LTsv_labels))
+
+def LTsv_sievetuplelabels(LTsv_rest,*LTsv_labels):
+    LTsv_line=""
+    for LTsv_label in LTsv_labels:
+        LTsv_data=LTsv_pickdatalabel(LTsv_rest,LTsv_label)
+        if len(LTsv_data) > 0:
+            LTsv_line+="{0}:{1}\t".format(LTsv_label,LTsv_data)
+    return LTsv_line.rstrip('\t')
 
 def LTsv_pushlinenum(LTsv_text,LTsv_linenum,LTsv_default=None):
     LTsv_line="" if LTsv_default is None else LTsv_default
@@ -392,12 +414,40 @@ def LTsv_unzipdata(LTsv_line):
                     LTsv_datas+=LTsv_data+'\t'
     return LTsv_datas.rstrip('\t')
 
+def LTsv_unziplabelsdata(LTsv_line,LTsv_labels):
+    LTsv_datas=""
+    LTsv_splitlabels=LTsv_joindatanum(LTsv_line,0,"").strip('\n').split('\t')
+    for LTsv_split in LTsv_splitlabels:
+        if len(LTsv_split) > 0:
+            LTsv_posL=LTsv_split.find(':')
+            if LTsv_posL > 0:
+                LTsv_label=LTsv_split[:LTsv_posL]
+                LTsv_data=LTsv_split[LTsv_posL+len('\t'):]
+                if LTsv_pickdatafind(LTsv_labels,LTsv_label) >= 0:
+                    LTsv_datas+=LTsv_data+'\t'
+    return LTsv_datas.rstrip('\t')
+
 #pythonstyle
+
+def LTsv_unziptuplelabelsdata(LTsv_line,*LTsv_labels):
+    LTsv_datas=""
+    LTsv_splitlabels=LTsv_joindatanum(LTsv_line,0,"").strip('\n').split('\t')
+    for LTsv_split in LTsv_splitlabels:
+        if len(LTsv_split) > 0:
+            LTsv_posL=LTsv_split.find(':')
+            if LTsv_posL > 0:
+                LTsv_label=LTsv_split[:LTsv_posL]
+                LTsv_data=LTsv_split[LTsv_posL+len('\t'):]
+                if LTsv_label in LTsv_labels:
+                    LTsv_datas+=LTsv_data+'\t'
+    return LTsv_datas.rstrip('\t')
+
 def LTsv_tuple2tsv(LTsv_tuple):
-    LTsv_line=""
-    for LTsv_data in LTsv_tuple:
-        LTsv_line+=str(LTsv_data)+'\t'
-    return LTsv_line.rstrip('\t')
+    return '\t'.join(LTsv_tuple)
+#    LTsv_line=""
+#    for LTsv_data in LTsv_tuple:
+#        LTsv_line="{0}{1}\t".format(LTsv_line,LTsv_data)
+#    return LTsv_line.rstrip('\t')
 
 def LTsv_tsv2list(LTsv_line):
     LTsv_list=LTsv_line.replace('\n','\t').strip('\t').split('\t')
@@ -454,16 +504,14 @@ def LTsv_dict2label(LTsv_dict):
         LTsv_line+=LTsv_label+':'+str(LTsv_data)+'\t'
     return LTsv_line.rstrip('\t')
 
-def LTsv_puppy_issue():
-    LTsv_issue=""
-    if sys.platform.startswith("linux"):
-        LTsv_etc_issue=LTsv_loadfile("/etc/issue")
-        if "Puppy Linux" in LTsv_etc_issue:
-            LTsv_issue=LTsv_etc_issue.rstrip('\n').replace('\n','\t')
-    return LTsv_issue
-
 def LTsv_file_ver():
-    return "20160328M231906"
+    return "20160927T004545"
+
+def LTsv_issue():
+    LTsv_issuefile=""
+    if sys.platform.startswith("linux"):
+        LTsv_issuefile=LTsv_loadfile("/etc/issue")
+    return LTsv_issuefile
 
 if __name__=="__main__":
     from LTsv_printf import *
@@ -476,8 +524,6 @@ if __name__=="__main__":
     newpage=LTsv_getpage(newfile,"LTsv8Py")
     newpage=LTsv_pushlinerest(newpage,"tsvtool","print\nfile\ntime\njoy\nkbd\ngui\nsdl")
     newpage=LTsv_pushlinerest(newpage,"tstfile","before:testfile.tsv\tafter:testfile.txt\treadme:readme.txt")
-    puppyissue=LTsv_puppy_issue(); puppyissue="issue\t"+puppyissue;
-    newpage=LTsv_pushlinerest(newpage,puppyissue)
     newfile=LTsv_putpage(newfile,"LTsv8Py",newpage)
     LTsv_savefile(tsvpath,newfile); printlog=LTsv_libc_printf("LTsv_savefile('{0}',newfile)".format(tsvpath),printlog)
     loadfile=LTsv_loadfile(tsvpath,newfile); printlog=LTsv_libc_printf("LTsv_loadfile(tsvpath)↓\n{0}-eof-".format(loadfile),printlog)
@@ -531,6 +577,10 @@ if __name__=="__main__":
     printlog=LTsv_libc_printf("joytsv=LTsv_labelzip(joylabel,joydata)↓\n{0}".format(joytsv),printlog)
     printlog=LTsv_libc_printf("LTsv_unziplabel(joytsv)↓\n{0}".format(LTsv_unziplabel(joytsv)),printlog)
     printlog=LTsv_libc_printf("LTsv_unzipdata(joytsv)↓\n{0}".format(LTsv_unzipdata(joytsv)),printlog)
+    printlog=LTsv_libc_printf("LTsv_unziplabelsdata(joytsv,'X\\tY\\tA\\tB')↓\n{0}".format(LTsv_unziplabelsdata(joytsv,'X\tY\tA\tB')),printlog)
+    printlog=LTsv_libc_printf("LTsv_unziptuplelabelsdata(joytsv,'X','Y','A','B')↓\n{0}".format(LTsv_unziptuplelabelsdata(joytsv,'X','Y','A','B')),printlog)
+    printlog=LTsv_libc_printf("LTsv_unziptuplelabelsdata(joytsv,*('X','Y','A','B'))↓\n{0}".format(LTsv_unziptuplelabelsdata(joytsv,*('X','Y','A','B'))),printlog)
+    printlog=LTsv_libc_printf("LTsv_unziptuplelabelsdata(joytsv,*tuple(['X','Y','A','B']))↓\n{0}".format(LTsv_unziptuplelabelsdata(joytsv,*tuple(['X','Y','A','B']))),printlog)
     joydic=LTsv_label2dictstr(joytsv)
     printlog=LTsv_libc_printf("joytsv=LTsv_label2dictstr(joytsv)↓\n{0}".format(joydic),printlog)
     joytsv=LTsv_dict2label(joydic)
@@ -544,6 +594,10 @@ if __name__=="__main__":
     printlog=LTsv_libc_printf("LTsv_tuple2tsv(joytuple)↓\n{0}".format(joylabel),printlog)
     joylabel=LTsv_tuple2tsv(joylist)
     printlog=LTsv_libc_printf("LTsv_tuple2tsv(joylist)↓\n{0}".format(joylabel),printlog)
+    printlog=LTsv_libc_printf("LTsv_sievetuplelabels(joytsv,*tuple(['A','B','N','X','Y']))↓\n{0}".format(LTsv_sievetuplelabels(joytsv,*tuple(['A','B','N','X','Y']))),printlog)
+    printlog=LTsv_libc_printf("LTsv_sievelabels(joytsv,'A\\tB\\tN\\tX\\tY')↓\n{0}".format(LTsv_sievelabels(joytsv,'A\tB\tN\tX\tY')),printlog)
+    print("")
+    printlog=LTsv_libc_printf("LTsv_issue()↓\n{0}".format(LTsv_issue()),printlog)
     print("")
     loadfile=LTsv_putpage(loadfile,"printlog",printlog)
     LTsv_savefile(txtpath,loadfile); LTsv_libc_printf("LTsv_savefile('{0}',loadfile)".format(txtpath))
@@ -554,4 +608,4 @@ if __name__=="__main__":
 
 # Copyright (c) 2016 ooblog
 # License: MIT
-# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE
+# https://github.com/ooblog/LTsv10kanedit/blob/master/LICENSE

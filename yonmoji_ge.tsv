@@ -9,7 +9,7 @@ modify	20160314M010029
 |L:Tsv]
 
 [yonmoji_ge|
-fontname	
+fontname	kan5x5comic
 fontsize	12
 username	ooblog
 pagetime	@0h:@0n:@0s
@@ -19,7 +19,7 @@ rewritetime	@0h:@0n:@0s
 [sitelist|
 yakuyon
 test
-LTsv9kantray
+LTsv10kantest
 yonmoji_ge
 |sitelist]
 

@@ -712,11 +712,10 @@ def LTsv_gettimerstr(timeformat=None):
     LTsv_tf=LTsv_tf if not "\t"     in LTsv_tf else LTsv_tf.replace("\t","@")
     return LTsv_tf
 
-def LTsv_time_ver():
-    return "20160328M231906"
 
 if __name__=="__main__":
     from LTsv_printf import *
+    from LTsv_file   import *
     print("__main__ Python{0.major}.{0.minor}.{0.micro},{1},{2}".format(sys.version_info,sys.platform,sys.stdout.encoding))
     print("")
     LTsv_checkFPS()
@@ -731,7 +730,7 @@ if __name__=="__main__":
     LTsv_libc_printf("LTsv_putdaytimespecify(2011,3,11,14,46,18,0,overhour=24,diffminute=0),LTsv_meridian_now→{0}".format(LTsv_meridian_now))
     LTsv_libc_printf("LTsv_getdaytimestr('{0}')↓\n{1}".format(timeformat24,LTsv_getdaytimestr(timeformat24)))
     print("")
-    LTsv_putdaytimever(LTsv_time_ver())
+    LTsv_putdaytimever(LTsv_file_ver())
     LTsv_libc_printf("LTsv_putdaytimever(LTsv_time_ver()),LTsv_meridian_now→{0}".format(LTsv_meridian_now))
     LTsv_libc_printf("LTsv_getdaytimestr('{0}')↓\n{1}".format(timeformat24,LTsv_getdaytimestr(timeformat24)))
     print("")
@@ -760,9 +759,9 @@ if __name__=="__main__":
     LTsv_puttimerspecify(2020,7,24,0,0,0,0)
     LTsv_libc_printf("LTsv_gettimerstr('{0}')↓\n{1}".format(timeformatday,LTsv_gettimerstr(timeformatday)))
     print("")
-    print("__main__",LTsv_time_ver())
+    print("__main__",LTsv_file_ver())
 
 
 # Copyright (c) 2016 ooblog
 # License: MIT
-# https://github.com/ooblog/LTsv9kantray/blob/master/LICENSE
+# https://github.com/ooblog/LTsv10kanedit/blob/master/LICENSE

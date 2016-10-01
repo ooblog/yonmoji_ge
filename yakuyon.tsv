@@ -22,7 +22,7 @@ feedmax		20
 <?title?>	!title
 <?description?>	!description
 <?breadcrumbs?>	!breadcrumbs
-<?tagline?>	!tagline
+<?commentary?>	!commentary
 <?links?>	!links
 <?sitename?>	http://<!username!>.github.io/
 |*rewritelist]
@@ -39,6 +39,7 @@ feedmax		20
 ^よんもじ$			「約四文字」で「<!pagename!>」はサイトジェネレータ「yonmoji_ge」の解説です。
 ^やくよん$			「約四文字」で「<!pagename!>」は「約四文字」のサイト解説です。
 ^ぶっくま$			「約四文字」で「<!pagename!>」は「約四文字」の検索ブックマークレットです。
+^ふぉんと$			「約四文字」で「<!pagename!>」は「約四文字」でも採用の「kan5x5comic」フォントです。
 .*				「約四文字」で「<!pagename!>」は○○です。
 |!description]
 
@@ -48,14 +49,15 @@ feedmax		20
 .*				  <span> &#62; <mark><!pagename!></mark></span> <span class="yonmoji_sitemap"><a href="404.html" title="<?sitename?>404.html">sitemap(404)</a></span>
 |!breadcrumbs]
 
-[!tagline|
+[!commentary|
 ^index$		
 ^404$		@404
 ^よんもじ$	@よんもじ
 ^やくよん$	@やくよん
 ^ぶっくま$	@ぶっくま
+^ふぉんと$	@ふぉんと
 .*		@page
-|!tagline]
+|!commentary]
 
 [@404|
  <section>
@@ -88,12 +90,12 @@ feedmax		20
    </div>
    <ol class="yonmoji_ketsushoutentei">
     <li>HTML入力ミス回避やサイト構成ちゃぶ台返し対応とか考えてサイトジェネレータも作った。</li>
-    <li>「yonmoji_ge.py」の細かい使い方はリポジトリ内の「yonmoji_ge.txt」を参考。<br />(リポジトリ準備できたらリンク貼り直す)</li>
+    <li>「<a href="https://github.com/ooblog/yonmoji_ge" title="ooblog/yonmoji_ge">yonmoji_ge</a>」の細かい使い方はリポジトリ内の「<a href="https://github.com/ooblog/yonmoji_ge/blob/master/yonmoji_ge.txt" title="ooblog/yonmoji_ge/yonmoji_ge.txt">yonmoji_ge.txt</a>」を参考。<br />(リポジトリ準備できたらリンク貼り直す)</li>
     <li>テンプレの変更部分だけ入力する形にしてページを量産予定。</li>
     <li>設定ファイル「yonmoji_ge.tsv」を書き換える事によって検索サイト以外のサイトも作れるようにはしたいかも。</li>
    </ol>
    <p>
-    ブログ作れたらというか、RSSリーダ(sirogane)作ってた事があるのにサイトジェネレータがRSS吐かない矛盾感は解決したい。<br />
+    ブログ作れたらというか、RSSリーダ(sirogane)作ってた事があるのにサイトジェネレータがRSS(Atom)吐かない矛盾感は解決したい。<br />
    </p>
    </article>
  </section>
@@ -111,10 +113,12 @@ feedmax		20
     <li>よくアニメとかドラマとかでググる時Google先生の代わりに架空の検索エンジン出てくる。</li>
     <li>逆に架空の検索エンジンを作ってしまうのはどうだろうと思いついた(自作の小説用途などに便利)。</li>
     <li>架空の検索エンジンだけどURLが存在していれば便乗フィッシングサイトから読者を守れる。</li>
-    <li>フィッシングとは違うけど「電車男」劇中掲示板に似た名前の「Aチャンネル」みたいに名称が普通に被る場合も。</li>
+    <li>フィッシングとは違うけど名前の衝突、<br />
+     例えばRSSなどフィード規格の方の「<a href="http://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared" title="Rss20AndAtom10Compared - Atom Wiki">Atom</a>」を「<a href="https://www.google.com/search?q=Atom" title="Atom - Google 検索">Atom</a>」でググってもテキストエディタの「<a href="https://atom.io/" title="Atom A hackable text editor">Atom</a>」出てくる感。<br />
+    </li>
    </ol>
    <p>
-    フォント「kantray5x5comic.woff」を表示テストする簡易的サイトを作るつもりが気がつくとなぜか違うサイトに。<br />
+    当初は「<a href="ふぉんと.html" title="フォントkan5x5comic(ふぉんと)">フォントkan5x5comic</a>」を表示テストする簡易サイトを作るつもりだったけど、おまけのJavaScriptが本体に。<br />
    </p>
    </article>
  </section>
@@ -139,13 +143,36 @@ feedmax		20
     </li>
    </ol>
    <p>
-    本来「/?page=<!pagename!>」といったクエリーはGitHubで動きません。<br />
-    JavaScriptでそれっぽく見せてるだけなので勘違いを伝聞しないよう注意。<br />
-    一旦トップページ(<a href="index.html" title="index.html">index.html</a>)を読み込むのが二度手間だし鯖負荷だしなのでブックマークレット推奨なのです。<br />
+    「/?page=<!pagename!>」といったクエリーは「<a href="https://pages.github.com/" title="GitHub Pages - Websites for you and your projects.">GitHub Pages</a>」で動きません。JavaScriptでそれっぽく見せてるだけなので注意。<br />
    </p>
    </article>
  </section>
 |@ぶっくま]
+
+[@ふぉんと|
+ <section>
+  <article>
+   <div class="yonmoji">
+    <H2 class="yonmoji_word">ふぉ<br />んと</H2>
+    <H3>「<dfn>フォントkan5x5comic<abbr title="フォントkan5x5comic">(<!pagename!>)</abbr></dfn>」は<br />「kanfont(LTsv10kanedit)」で作成できるフォントです。</H3>
+    <br class="yonmoji_both" />
+   </div>
+   <ol class="yonmoji_‎syllogism">
+    <li>
+     ここ「約四文字」のサイトやロゴにも使ってる「kan5x5comic」フォントです。<br />
+     「kan5x5」の「活」グリフと「漫」グリフを混ぜてるのでアンチックフォントに近いです。<br />
+    </li>
+    <li>「kanfont」から直接フォントが生成できないので「FontForge」が使えないWindows環境対策で、
+     「<a href="http://ooblog.github.io/kan5x5comic.woff" title="kan5x5comic.woff">kan5x5comic.woff</a>」を「kan5x5comic.ttf」に例えば「<a href="http://opentype.jp/woffconv.htm" title="WOFFコンバータ">WOFFコンバータ</a>」で変換と言う流れも想定しました。<br />
+     Linux環境なら「kan5x5.svg」を「FontForge」で「kan5x5comic.ttf」に変換します。<br />
+    <li>「<a href="https://github.com/ooblog/LTsv10kanedit" title="ooblog/LTsv10kanedit">kanfont(LTsv10kanedit)</a>」の使い方は「<a href="https://github.com/ooblog/LTsv10kanedit" title="ooblog/LTsv10kanedit">https://github.com/ooblog/LTsv10kanedit</a>」を参考。</li>
+   </ol>
+   <p>
+    フォント「kan5x5comic」のライセンスも「kanfont」に準拠。
+   </p>
+   </article>
+ </section>
+|@ふぉんと]
 
 [@page|
  <section>
@@ -174,6 +201,7 @@ feedmax		20
 ^よんもじ$	@約四関連リンク
 ^やくよん$	@約四関連リンク
 ^ぶっくま$	@約四関連リンク
+^ふぉんと$	@約四関連リンク
 .*		@links
 |!links]
 
@@ -188,6 +216,8 @@ feedmax		20
     <dd>「約四文字(やくよん)」は架空の検索エンジンです。</dd>
     <dt><a href="ぶっくま.html" title="ぶっくま.html">ぶっくま</a></dt>
     <dd>「ブックマークレット(ぶっくま)」は<br />ブラウザのブックマークで動作する検索ダイアログです。</dd>
+    <dt><a href="ふぉんと.html" title="ふぉんと.html">ふぉんと</a></dt>
+    <dd>「フォントkan5x5comic(ふぉんと)」は<br />「kanfont(LTsv10kanedit)」で作成できるフォントです。</dd>
    </dl>
   </article>
  </section>
@@ -221,7 +251,7 @@ feedmax		20
 <?breadcrumbs?>
   <br class="yonmoji_both" />
  </header>
-<?tagline?>
+<?commentary?>
 <?links?>
  <section>
   <article>
@@ -229,7 +259,7 @@ feedmax		20
    <div class="yonmoji">
     <p class="yonmoji_logo">約四<br />文字</p>
     <form id="entry" action="" method="get" onsubmit="newword(); return false;">
-     <p><label>page：<input id="page" type="search" name="page" value="" class="yonmoji_entry"></label> <input type="submit" value="約四文字"></p>
+     <p><label>page：<input id="page" type="search" name="page" value="" placeholder="ふぉんと" class="yonmoji_entry"></label> <input type="submit" value="約四文字"></p>
     </form>
    </div>
    <noscript>
@@ -253,8 +283,8 @@ feedmax		20
 [baseCSS|
 @charset "utf-8";
 @font-face{
-  font-family: "kantray5x5comic";
-  src: url("kantray5x5comic.woff") format('woff');
+  font-family: "kan5x5comic";
+  src: url("kan5x5comic.woff") format('woff');
 }
 body{
   background-color: white;
@@ -268,7 +298,7 @@ header{
   padding: 1rem;
 }
  .yonmoji_root{
-   font-family: "kantray5x5comic";  font-size: 1rem;
+   font-family: "kan5x5comic";  font-size: 1rem;
    line-height: 1rem;
    float: left;
    margin-top: -0.5rem;
@@ -302,14 +332,14 @@ input.yonmoji_entry:focus{
    padding-bottom: 0rem;
  }
  .yonmoji_logo{
-   font-family: "kantray5x5comic";  font-size: 5rem;
+   font-family: "kan5x5comic";  font-size: 5rem;
    line-height: 5rem;
    width: 10rem;
    height: 10rem;
    margin: 0 auto;
  }
  .yonmoji_word{
-   font-family: "kantray5x5comic";  font-size: 2rem;
+   font-family: "kan5x5comic";  font-size: 2rem;
    line-height: 2rem;
    float: left;
    margin: 0rem;
@@ -343,13 +373,14 @@ footer{
 
 [baseJS|
 var newpage="index";
+var samplepage=["よんもじ","やくよん","ぶっくま","ふぉんと"];
 function newhref(){
     var regExp=new RegExp("[/|\\|:|*|?|\"|<|>|\|\%]","g");
     window.location.href=newpage.replace(regExp,"")+".html";
 }
 function newquery(){
     var oldhref=window.location.href;
-    if ( oldhref.indexOf("?page=")>=0 && oldhref.indexOf("github.io/")>=0 ){
+    if( oldhref.indexOf("?page=")>=0 && oldhref.indexOf("github.io/")>=0 ){
         var regExp=new RegExp("github\.io\/(.*)page\=","g");
         oldhref=oldhref.replace(regExp,"github.io/");
         oldhref=oldhref.substr(oldhref.indexOf("github.io/")+"github.io/".length);
@@ -360,13 +391,21 @@ function newquery(){
     else{
         newstyle();
         oldhref=oldhref.substr(oldhref.indexOf("github.io/")+"github.io/".length);
-        if ( oldhref=="" || oldhref=="index.html" ){
+        oldhref=oldhref.replace(".html","");
+        if ( oldhref=="" || oldhref=="index" ){
             document.forms.entry.page.focus();
         }
+        if ( oldhref=="" || oldhref=="index" || oldhref=="404" ){
+            newpage=samplepage[Math.floor(Math.random()*samplepage.length)]
+        }
+        else{
+            newpage=decodeURI(oldhref)
+        }
+        document.forms.entry.page.placeholder=newpage;
     }
 }
 function newword(){
-    newpage=document.forms.entry.page.value;
+    if( document.forms.entry.page.value.length>0 ){ newpage=document.forms.entry.page.value; }
     newhref();
 }
 
@@ -421,7 +460,7 @@ function newstyle(){
      "yonmoji_upper-alpha":         "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ",
      "yonmoji_iroha-hiragana":      "いろはにほへとちりぬるをわかよたれそつねならむうゐのおくやまけふこえてあさきゆめみしゑひもせす",
      "yonmoji_iroha-katakana":      "イロハニホヘトチリヌルヲワカヨタレソツネナラムウヰノオクヤマケフコエテアサキユメミシヱヒモセス",
-     "yonmoji_todofuken":           "北青岩城秋形島茨栃群埼千東神潟富石井梨野岐静知三滋京阪兵奈和鳥根岡広口徳川媛高福佐長熊分宮鹿沖"
+     "yonmoji_todofuken":           "北青岩城秋形島茨栃群埼千東神潟富石井梨野岐静知三滋京阪兵奈和鳥根岡広口徳川媛高福佐長熊分宮鹿沖",
      "yonmoji_grandchild":           "子孫曽玄来昆仍雲"
     };
     var syllogismStyle=document.createElement('style'); syllogismStyle.type="text/css";
