@@ -1,6 +1,6 @@
 # 「yonmoji_ge」は「約四文字」サイトジェネレータのPythonによる実装です。
 
-[http://ooblog.github.io/](http://ooblog.github.io/)のPagesを検索エンジン風に構築。  
+[https://ooblog.github.io/](https://ooblog.github.io/)のPagesを検索エンジン風に構築。  
 ラノベ等で検索エンジンっぽい何かが必要になった時などの大道具小道具的な用途を想定。
 ![yonmoji_ge_cap](yonmoji_ge_cap.png "yonmoji_ge")  
 
@@ -14,13 +14,13 @@
 ## 入力項目の変更やサイトのテンプレ追加もできます。
 
 設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」などの解説は「[yonmoji_ge.txt](yonmoji_ge.txt)」を参考。  
-初期設定では[「約四文字&#40;yakuyon&#41;」](http://ooblog.github.io/)を想定したサンプルを同梱してます。
+初期設定では[「約四文字&#40;yakuyon&#41;」](https://ooblog.github.io/)を想定したサンプルを同梱してます。
 設定ファイル「[yonmoji_ge.tsv](yonmoji_ge.tsv)」の編集方法など詳しい事は「[yonmoji_ge.txt](yonmoji_ge.txt)」の方に書いてます。  
 
 
 ## 「L:Tsv」は「yonmoji_ge」を動かすためのモジュール群です。
 
-「L&#58;Tsv」モジュールの仕様は「[kantray](https://github.com/ooblog/LTsv9kantray)」の方の「[LTsv.txt](https://github.com/ooblog/LTsv9kantray/blob/master/LTsv.txt)」の方に書いてます。  
+「L&#58;Tsv」モジュールの仕様は「[kanedit](https://github.com/ooblog/LTsv10kanedit)」の方の「[LTsv.txt](https://github.com/ooblog/LTsv10kanedit/blob/master/LTsv.txt)」の方に書いてます。  
 
 
 ## 動作環境。
