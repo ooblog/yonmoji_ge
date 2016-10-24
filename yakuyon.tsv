@@ -24,7 +24,7 @@ feedmax		20
 <?breadcrumbs?>	!breadcrumbs
 <?commentary?>	!commentary
 <?links?>	!links
-<?sitename?>	http://<!username!>.github.io/
+<?sitename?>	https://<!username!>.github.io/
 |*rewritelist]
 
 [!title|
@@ -114,7 +114,7 @@ feedmax		20
     <li>逆に架空の検索エンジンを作ってしまうのはどうだろうと思いついた(自作の小説用途などに便利)。</li>
     <li>架空の検索エンジンだけどURLが存在していれば便乗フィッシングサイトから読者を守れる。</li>
     <li>フィッシングとは違うけど名前の衝突、<br />
-     例えばRSSなどフィード規格の方の「<a href="http://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared" title="Rss20AndAtom10Compared - Atom Wiki">Atom</a>」を「<a href="https://www.google.com/search?q=Atom" title="Atom - Google 検索">Atom</a>」でググってもテキストエディタの「<a href="https://atom.io/" title="Atom A hackable text editor">Atom</a>」出てくる感。<br />
+     例えばRSSなどフィード規格の方の「<a href="https://www.intertwingly.net/wiki/pie/Rss20AndAtom10Compared" title="Rss20AndAtom10Compared - Atom Wiki">Atom</a>」を「<a href="https://www.google.com/search?q=Atom" title="Atom - Google 検索">Atom</a>」でググってもテキストエディタの「<a href="https://atom.io/" title="Atom A hackable text editor">Atom</a>」出てくる感。<br />
     </li>
    </ol>
    <p>
@@ -138,8 +138,8 @@ feedmax		20
     <li>OKボタンで、ダイアログに入力したページ名でページが表示されるはずです。</li>
     <li>
      実は「<a href="javascript:(function(){%20var%20d=document;var%20s=d.selection?d.selection.createRange().text:d.getSelection();%20var%20t=prompt('page%EF%BC%9A['+s+']%E7%B4%84%E5%9B%9B%E6%96%87%E5%AD%97',s);%20if(t.length>0){var%20regExp=new%20RegExp('[/|\\|:|*|?|<|>|\|]','g');t=t.replace(regExp,'');window.open('<?sitename?>'+t+'.html');}%20})();" title="「約四文字」検索ダイアログ(ブックマークレット)">「約四文字」検索ダイアログ</a>」をブックマークに登録するよりも、<br />
-     ブラウザ右上の検索バーから「<a href=""<?sitename?>opensearch.xml" title="<?sitename?>opensearch.xml">opensearch.xml</a>」を登録するといわゆる「検索プロバイダー」っぽく、<br />
-     URL「http://<?sitename?>?page=<!pagename!>」を発行させてより検索っぽい挙動に寄せる事も可能です。<br />
+     ブラウザ右上の検索バーから「<a href="<?sitename?>opensearch.xml" title="<?sitename?>opensearch.xml">opensearch.xml</a>」を登録するといわゆる「検索プロバイダー」っぽく、<br />
+     URL「https://<?sitename?>?page=<!pagename!>」を発行させてより検索っぽい挙動に寄せる事も可能です。<br />
     </li>
    </ol>
    <p>
@@ -163,7 +163,7 @@ feedmax		20
      「kan5x5」の「活」グリフと「漫」グリフを混ぜてるのでアンチックフォントに近いです。<br />
     </li>
     <li>「kanfont」から直接フォントが生成できないので「FontForge」が使えないWindows環境対策で、
-     「<a href="http://ooblog.github.io/kan5x5comic.woff" title="kan5x5comic.woff">kan5x5comic.woff</a>」を「kan5x5comic.ttf」に例えば「<a href="http://opentype.jp/woffconv.htm" title="WOFFコンバータ">WOFFコンバータ</a>」で変換と言う流れも想定しました。<br />
+     「<a href="https://ooblog.github.io/kan5x5comic.woff" title="kan5x5comic.woff">kan5x5comic.woff</a>」を「kan5x5comic.ttf」に例えば「<a href="http://opentype.jp/woffconv.htm" title="WOFFコンバータ">WOFFコンバータ</a>」で変換と言う流れも想定しました。<br />
      Linux環境なら「kan5x5.svg」を「FontForge」で「kan5x5comic.ttf」に変換します。<br />
     <li>「<a href="https://github.com/ooblog/LTsv10kanedit" title="ooblog/LTsv10kanedit">kanfont(LTsv10kanedit)</a>」の使い方は「<a href="https://github.com/ooblog/LTsv10kanedit" title="ooblog/LTsv10kanedit">https://github.com/ooblog/LTsv10kanedit</a>」を参考。</li>
    </ol>
@@ -488,18 +488,17 @@ function newstyle(){
 
 [baseSEARCH|
 <?xml version="1.0" encoding="UTF-8"?>
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<OpenSearchDescription xmlns="https://a9.com/-/spec/opensearch/1.1/" xmlns:moz="https://www.mozilla.org/2006/browser/search/">
   <ShortName>「約四文字」</ShortName>
   <Description>詮索しない検索エンジン「約四文字」。</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAA8FBMVEXU1NSEhISDg4P///96enqMjIyWlpbExMSGhobY2NhwcHAAAACLi4sKCgp5eXmkpKRnZ2e1tbVXV1eTk5NdXV1fX1+ZmZnJycmYmJiqqqqrq6tra2sVFRW8vLzc3Nyfn5+ysrJAQEC5ubmlpaW/v7+pqamtra1kZGSvr6+cnJzw8PCSkpIrKyshISHT09MWFha0tLTCwsJ4eHhCQkJ9fX2VlZUmJiY1NTVLS0uUlJSOjo6IiIh3d3dWVlYxMTGbm5uxsbFYWFi6urpiYmIzMzNoaGg0NDSjo6OHh4cICAhMTEyAgICsrKy7u7vt7e38/Pxxpqz8AAAAtklEQVR42i2P1RbDMAxDvWrsMXXMzMzMvP//myVp9eA491hyQt8qgEoTfV3q86MXC8BvsKEP3fkhm6csN7BOxxOfa5f0VYLATQAxvwcOW9Oi01oe2Gx5Bxmm02DIo/FkOuP5wrNcGZaGWNEzLX0B0GpDqdMVhbK5fIGLpXKpUuVavdGklDGaNi0ZmREHJ9RLk1ChIS0cIQWiMQUQUN8xFCQ3s0fcvPAx++UWsmgEq80Oh1NzCfAHCykUGF9RBZoAAAAASUVORK5CYII=</Image>
-  <Url type="text/html" method="GET" template="http://ooblog.github.io/?page={searchTerms}" />
+  <Url type="text/html" method="GET" template="https://ooblog.github.io/?page={searchTerms}" />
 </OpenSearchDescription>
 |baseSEARCH]
 
 [baseFEED|
 <?xml version="1.0" encoding="utf-8"?>
-<feed version="0.3" xmlns="http://purl.org/atom/ns#">
  <title>「約四文字」(<?sitename?>)</title>
  <link rel="alternate" type="text/html" href="<?sitename?>" />
  <updated><!updated!></updated>
