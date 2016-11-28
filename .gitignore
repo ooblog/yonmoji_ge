@@ -62,6 +62,7 @@ target/
 .ipynb_checkpoints
 
 
+# git status
 # git push github:ooblog/yonmoji_ge.git master
 # git push github:ooblog/yonmoji_ge.git 20160416S030355
 # git log

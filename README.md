@@ -1,7 +1,14 @@
-# 「yonmoji_ge」は「約四文字」サイトジェネレータのPythonによる実装です。
+# 「yonmoji_ge」は「約四文字」サイトジェネレータのPythonによる実装でした。
+
+## 「L&#58;Tsv」付属のモジュールドキュメント作成ツール「LTsv_doc.py」がサイトジェネレータに流用できたので「yonmoji_ge」の役割終了です。
+
+最新の「[LTsv10kanedit](https://github.com/ooblog/LTsv10kanedit "LTsv10kanedit")」に移行してください。
+
+
+## 「yonmoji_ge」の扱い方。
 
 [https://ooblog.github.io/](https://ooblog.github.io/)のPagesを検索エンジン風に構築。  
-ラノベ等で検索エンジンっぽい何かが必要になった時などの大道具小道具的な用途を想定。
+ラノベ等で検索エンジンっぽい何かが必要になった時などの大道具小道具的な用途を想定。  
 ![yonmoji_ge_cap](yonmoji_ge_cap.png "yonmoji_ge")  
 
 「site」は作成するサイトのテンプレートや各リポジトリのサブディレクトリなどを選びます。  
